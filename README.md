@@ -1,3 +1,8 @@
+#### USEFUL INFO
+EDAV_TM.html               : instructor's example
+text_analysis_sample.R     : sample analysis with this data
+
+
 #### DATA (presidents' speeches)
 https://drive.google.com/drive/u/3/folders/0B4tbdeCwIm93RUpWRzNpaXZ0bHc
 
@@ -20,8 +25,5 @@ The following things might help to give your some ideas:
 
 (3) Key words/Topics -- what have changed through time, what have remained the same?
 
-
-#### USEFUL INFO
-EDAV_TM.html : instructor's example
 
 
