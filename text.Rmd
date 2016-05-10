@@ -22,7 +22,7 @@ require('fpc')
 require('topicmodels')
 
 setwd("C:\\Users\\HS\\Desktop\\school\\classes\\VIS\\HW_TEXT")
-
+setwd("/Users/bobminnich/Documents/Columbia/Courses/DataVisualization/Edav-Text")
 mypwd = file.path('source')
 
 docs = Corpus(DirSource(mypwd))

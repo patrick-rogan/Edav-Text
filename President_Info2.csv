@@ -1,0 +1,225 @@
+,name,MD,year_x,File,Years in office,year_y,Age at inauguration,State elected from,# of electoral votes, # of popular votes , National total votes ,Total electoral votes,Rating points,Political Party,Occupation,College,% electoral,% popular
+0,George Washington, January 8,1790,1790_December_8.txt,8,1789.0,57.0,Virginia,69,NA(),NA(),69,842.0,None,Planter,None,100.0,NA()
+1,George Washington, December 8,1790,1790_January_8.txt,8,1789.0,57.0,Virginia,69,NA(),NA(),69,842.0,None,Planter,None,100.0,NA()
+2,George Washington, October 25,1791,1791_October_25.txt,8,1789.0,57.0,Virginia,69,NA(),NA(),69,842.0,None,Planter,None,100.0,NA()
+3,George Washington, November 6,1792,1792_November_6.txt,8,1789.0,57.0,Virginia,69,NA(),NA(),69,842.0,None,Planter,None,100.0,NA()
+4,George Washington, December 3,1793,1793_December_3.txt,8,1789.0,57.0,Virginia,69,NA(),NA(),69,842.0,None,Planter,None,100.0,NA()
+5,George Washington, November 19,1794,1794_November_19.txt,8,1789.0,57.0,Virginia,69,NA(),NA(),69,842.0,None,Planter,None,100.0,NA()
+6,George Washington, December 8,1795,1795_December_8.txt,8,1789.0,57.0,Virginia,69,NA(),NA(),69,842.0,None,Planter,None,100.0,NA()
+7,George Washington, December 7,1796,1796_December_7.txt,8,1789.0,57.0,Virginia,69,NA(),NA(),69,842.0,None,Planter,None,100.0,NA()
+8,John Adams, November 22,1797,1797_November_22.txt,4,1797.0,61.0,Massachusetts,132,NA(),NA(),139,598.0,Federalist,Lawyer,Harvard,95.0,NA()
+9,John Adams, December 8,1798,1798_December_8.txt,4,1797.0,61.0,Massachusetts,132,NA(),NA(),139,598.0,Federalist,Lawyer,Harvard,95.0,NA()
+10,John Adams, December 3,1799,1799_December_3.txt,4,1797.0,61.0,Massachusetts,132,NA(),NA(),139,598.0,Federalist,Lawyer,Harvard,95.0,NA()
+11,John Adams, November 11,1800,1800_November_11.txt,4,1797.0,61.0,Massachusetts,132,NA(),NA(),139,598.0,Federalist,Lawyer,Harvard,95.0,NA()
+12,Thomas Jefferson, December 8,1801,1801_December_8.txt,8,1801.0,57.0,Virginia,73,NA(),NA(),137,711.0,Democratic-Republican,"Planter, Lawyer",William and Mary,53.3,NA()
+13,Thomas Jefferson, December 15,1802,1802_December_15.txt,8,1801.0,57.0,Virginia,73,NA(),NA(),137,711.0,Democratic-Republican,"Planter, Lawyer",William and Mary,53.3,NA()
+14,Thomas Jefferson, October 17,1803,1803_October_17.txt,8,1801.0,57.0,Virginia,73,NA(),NA(),137,711.0,Democratic-Republican,"Planter, Lawyer",William and Mary,53.3,NA()
+15,Thomas Jefferson, November 8,1804,1804_November_8.txt,8,1801.0,57.0,Virginia,73,NA(),NA(),137,711.0,Democratic-Republican,"Planter, Lawyer",William and Mary,53.3,NA()
+16,Thomas Jefferson, December 3,1805,1805_December_3.txt,8,1801.0,57.0,Virginia,73,NA(),NA(),137,711.0,Democratic-Republican,"Planter, Lawyer",William and Mary,53.3,NA()
+17,Thomas Jefferson, December 2,1806,1806_December_2.txt,8,1801.0,57.0,Virginia,73,NA(),NA(),137,711.0,Democratic-Republican,"Planter, Lawyer",William and Mary,53.3,NA()
+18,Thomas Jefferson, October 27,1807,1807_October_27.txt,8,1801.0,57.0,Virginia,73,NA(),NA(),137,711.0,Democratic-Republican,"Planter, Lawyer",William and Mary,53.3,NA()
+19,Thomas Jefferson, November 8,1808,1808_November_8.txt,8,1801.0,57.0,Virginia,73,NA(),NA(),137,711.0,Democratic-Republican,"Planter, Lawyer",William and Mary,53.3,NA()
+20,James Madison, November 29,1809,1809_November_29.txt,8,1809.0,57.0,Virginia,122,NA(),NA(),176,567.0,Democratic-Republican,Lawyer,Princeton,69.3,NA()
+21,James Madison, December 5,1810,1810_December_5.txt,8,1809.0,57.0,Virginia,122,NA(),NA(),176,567.0,Democratic-Republican,Lawyer,Princeton,69.3,NA()
+22,James Madison, November 5,1811,1811_November_5.txt,8,1809.0,57.0,Virginia,122,NA(),NA(),176,567.0,Democratic-Republican,Lawyer,Princeton,69.3,NA()
+23,James Madison, November 4,1812,1812_November_4.txt,8,1809.0,57.0,Virginia,122,NA(),NA(),176,567.0,Democratic-Republican,Lawyer,Princeton,69.3,NA()
+24,James Madison, December 7,1813,1813_December_7.txt,8,1809.0,57.0,Virginia,122,NA(),NA(),176,567.0,Democratic-Republican,Lawyer,Princeton,69.3,NA()
+25,James Madison, September 20,1814,1814_September_20.txt,8,1809.0,57.0,Virginia,122,NA(),NA(),176,567.0,Democratic-Republican,Lawyer,Princeton,69.3,NA()
+26,James Madison, December 5,1815,1815_December_5.txt,8,1809.0,57.0,Virginia,122,NA(),NA(),176,567.0,Democratic-Republican,Lawyer,Princeton,69.3,NA()
+27,James Madison, December 3,1816,1816_December_3.txt,8,1809.0,57.0,Virginia,122,NA(),NA(),176,567.0,Democratic-Republican,Lawyer,Princeton,69.3,NA()
+28,James Monroe, December 12,1817,1817_December_12.txt,8,1817.0,58.0,Virginia,183,NA(),NA(),221,602.0,Democratic-Republican,Lawyer,William and Mary,82.8,NA()
+29,James Monroe, November 16,1818,1818_November_16.txt,8,1817.0,58.0,Virginia,183,NA(),NA(),221,602.0,Democratic-Republican,Lawyer,William and Mary,82.8,NA()
+30,James Monroe, December 7,1819,1819_December_7.txt,8,1817.0,58.0,Virginia,183,NA(),NA(),221,602.0,Democratic-Republican,Lawyer,William and Mary,82.8,NA()
+31,James Monroe, November 14,1820,1820_November_14.txt,8,1817.0,58.0,Virginia,183,NA(),NA(),221,602.0,Democratic-Republican,Lawyer,William and Mary,82.8,NA()
+32,James Monroe, December 3,1821,1821_December_3.txt,8,1817.0,58.0,Virginia,183,NA(),NA(),221,602.0,Democratic-Republican,Lawyer,William and Mary,82.8,NA()
+33,James Monroe, December 3,1822,1822_December_3.txt,8,1817.0,58.0,Virginia,183,NA(),NA(),221,602.0,Democratic-Republican,Lawyer,William and Mary,82.8,NA()
+34,James Monroe, December 2,1823,1823_December_2.txt,8,1817.0,58.0,Virginia,183,NA(),NA(),221,602.0,Democratic-Republican,Lawyer,William and Mary,82.8,NA()
+35,James Monroe, December 7,1824,1824_December_7.txt,8,1817.0,58.0,Virginia,183,NA(),NA(),221,602.0,Democratic-Republican,Lawyer,William and Mary,82.8,NA()
+36,John Quincy Adams, December 6,1825,1825_December_6.txt,4,1825.0,57.0,Massachusetts,84,NA(),NA(),261,564.0,Democratic-Republican,Lawyer,Harvard,32.2,NA()
+37,John Quincy Adams, December 5,1826,1826_December_5.txt,4,1825.0,57.0,Massachusetts,84,NA(),NA(),261,564.0,Democratic-Republican,Lawyer,Harvard,32.2,NA()
+38,John Quincy Adams, December 4,1827,1827_December_4.txt,4,1825.0,57.0,Massachusetts,84,NA(),NA(),261,564.0,Democratic-Republican,Lawyer,Harvard,32.2,NA()
+39,John Quincy Adams, December 2,1828,1828_December_2.txt,4,1825.0,57.0,Massachusetts,84,NA(),NA(),261,564.0,Democratic-Republican,Lawyer,Harvard,32.2,NA()
+40,Andrew Jackson, December 8,1829,1829_December_8.txt,8,1829.0,61.0,Tennessee,178," 642,553 "," 1,148,018 ",261,632.0,Democrat,Lawyer,None,68.2,56.0
+41,Andrew Jackson, December 6,1830,1830_December_6.txt,8,1829.0,61.0,Tennessee,178," 642,553 "," 1,148,018 ",261,632.0,Democrat,Lawyer,None,68.2,56.0
+42,Andrew Jackson, December 6,1831,1831_December_6.txt,8,1829.0,61.0,Tennessee,178," 642,553 "," 1,148,018 ",261,632.0,Democrat,Lawyer,None,68.2,56.0
+43,Andrew Jackson, December 4,1832,1832_December_4.txt,8,1829.0,61.0,Tennessee,178," 642,553 "," 1,148,018 ",261,632.0,Democrat,Lawyer,None,68.2,56.0
+44,Andrew Jackson, December 3,1833,1833_December_3.txt,8,1829.0,61.0,Tennessee,178," 642,553 "," 1,148,018 ",261,632.0,Democrat,Lawyer,None,68.2,56.0
+45,Andrew Jackson, December 1,1834,1834_December_1.txt,8,1829.0,61.0,Tennessee,178," 642,553 "," 1,148,018 ",261,632.0,Democrat,Lawyer,None,68.2,56.0
+46,Andrew Jackson, December 7,1835,1835_December_7.txt,8,1829.0,61.0,Tennessee,178," 642,553 "," 1,148,018 ",261,632.0,Democrat,Lawyer,None,68.2,56.0
+47,Andrew Jackson, December 5,1836,1836_December_5.txt,8,1829.0,61.0,Tennessee,178," 642,553 "," 1,148,018 ",261,632.0,Democrat,Lawyer,None,68.2,56.0
+48,Martin van Buren, December 5,1837,1837_December_5.txt,,,,,,,,,,,,,,
+49,Martin van Buren, December 3,1838,1838_December_3.txt,,,,,,,,,,,,,,
+50,Martin van Buren, December 2,1839,1839_December_2.txt,,,,,,,,,,,,,,
+51,Martin van Buren, December 5,1840,1840_December_5.txt,,,,,,,,,,,,,,
+52,John Tyler, December 7,1841,1841_December_7.txt,4,1841.0,51.0,Virginia,NA(),NA(),NA(),NA(),369.0,Whig,Lawyer,William and Mary,NA(),NA()
+53,John Tyler, December 6,1842,1842_December_6.txt,4,1841.0,51.0,Virginia,NA(),NA(),NA(),NA(),369.0,Whig,Lawyer,William and Mary,NA(),NA()
+54,John Tyler, December 6,1843,1843_December_6.txt,4,1841.0,51.0,Virginia,NA(),NA(),NA(),NA(),369.0,Whig,Lawyer,William and Mary,NA(),NA()
+55,John Tyler, December 3,1844,1844_December_3.txt,4,1841.0,51.0,Virginia,NA(),NA(),NA(),NA(),369.0,Whig,Lawyer,William and Mary,NA(),NA()
+56,James Polk, December 2,1845,1845_December_2.txt,,,,,,,,,,,,,,
+57,James Polk, December 8,1846,1846_December_8.txt,,,,,,,,,,,,,,
+58,James Polk, December 7,1847,1847_December_7.txt,,,,,,,,,,,,,,
+59,James Polk, December 5,1848,1848_December_5.txt,,,,,,,,,,,,,,
+60,Zachary Taylor, December 4,1849,1849_December_4.txt,1,1849.0,64.0,Louisiana,163," 1,361,393 "," 2,879,184 ",290,447.0,Whig,Soldier,None,56.2,47.3
+61,Millard Fillmore, December 2,1850,1850_December_2.txt,3,1850.0,50.0,New York,NA(),NA(),NA(),NA(),395.0,Whig,Lawyer,None,NA(),NA()
+62,Millard Fillmore, December 2,1851,1851_December_2.txt,3,1850.0,50.0,New York,NA(),NA(),NA(),NA(),395.0,Whig,Lawyer,None,NA(),NA()
+63,Millard Fillmore, December 6,1852,1852_December_6.txt,3,1850.0,50.0,New York,NA(),NA(),NA(),NA(),395.0,Whig,Lawyer,None,NA(),NA()
+64,Franklin Pierce, December 5,1853,1853_December_5.txt,4,1853.0,48.0,New Hampshire,254," 1,607,510 "," 3,161,830 ",296,286.0,Democrat,Lawyer,Bowdoin,85.8,50.8
+65,Franklin Pierce, December 4,1854,1854_December_4.txt,4,1853.0,48.0,New Hampshire,254," 1,607,510 "," 3,161,830 ",296,286.0,Democrat,Lawyer,Bowdoin,85.8,50.8
+66,Franklin Pierce, December 31,1855,1855_December_31.txt,4,1853.0,48.0,New Hampshire,254," 1,607,510 "," 3,161,830 ",296,286.0,Democrat,Lawyer,Bowdoin,85.8,50.8
+67,Franklin Pierce, December 2,1856,1856_December_2.txt,4,1853.0,48.0,New Hampshire,254," 1,607,510 "," 3,161,830 ",296,286.0,Democrat,Lawyer,Bowdoin,85.8,50.8
+68,James Buchanan, December 8,1857,1857_December_8.txt,4,1857.0,65.0,Pennsylvania,174," 1,836,072 "," 4,054,647 ",296,259.0,Democrat,Lawyer,Dickinson,58.8,45.3
+69,James Buchanan, December 6,1858,1858_December_6.txt,4,1857.0,65.0,Pennsylvania,174," 1,836,072 "," 4,054,647 ",296,259.0,Democrat,Lawyer,Dickinson,58.8,45.3
+70,James Buchanan, December 19,1859,1859_December_19.txt,4,1857.0,65.0,Pennsylvania,174," 1,836,072 "," 4,054,647 ",296,259.0,Democrat,Lawyer,Dickinson,58.8,45.3
+71,James Buchanan, December 3,1860,1860_December_3.txt,4,1857.0,65.0,Pennsylvania,174," 1,836,072 "," 4,054,647 ",296,259.0,Democrat,Lawyer,Dickinson,58.8,45.3
+72,Abraham Lincoln, December 3,1861,1861_December_3.txt,4,1861.0,52.0,Illinois,180," 1,865,908 "," 4,685,561 ",303,900.0,Republican,Lawyer,None,59.4,39.8
+73,Abraham Lincoln, December 1,1862,1862_December_1.txt,4,1861.0,52.0,Illinois,180," 1,865,908 "," 4,685,561 ",303,900.0,Republican,Lawyer,None,59.4,39.8
+74,Abraham Lincoln, December 8,1863,1863_December_8.txt,4,1861.0,52.0,Illinois,180," 1,865,908 "," 4,685,561 ",303,900.0,Republican,Lawyer,None,59.4,39.8
+75,Abraham Lincoln, December 6,1864,1864_December_6.txt,4,1861.0,52.0,Illinois,180," 1,865,908 "," 4,685,561 ",303,900.0,Republican,Lawyer,None,59.4,39.8
+76,Andrew Johnson, December 4,1865,1865_December_4.txt,4,1865.0,56.0,Tennessee,NA(),NA(),NA(),NA(),280.0,National Union,Tailor,None,NA(),NA()
+77,Andrew Johnson, December 3,1866,1866_December_3.txt,4,1865.0,56.0,Tennessee,NA(),NA(),NA(),NA(),280.0,National Union,Tailor,None,NA(),NA()
+78,Andrew Johnson, December 3,1867,1867_December_3.txt,4,1865.0,56.0,Tennessee,NA(),NA(),NA(),NA(),280.0,National Union,Tailor,None,NA(),NA()
+79,Andrew Johnson, December 9,1868,1868_December_9.txt,4,1865.0,56.0,Tennessee,NA(),NA(),NA(),NA(),280.0,National Union,Tailor,None,NA(),NA()
+80,Ulysses S. Grant, December 6,1869,1869_December_6.txt,8,1869.0,46.0,Illinois,214," 3,013,650 "," 5,722,440 ",294,403.0,Republican,Soldier,US Military Academy,72.8,52.7
+81,Ulysses S. Grant, December 5,1870,1870_December_5.txt,8,1869.0,46.0,Illinois,214," 3,013,650 "," 5,722,440 ",294,403.0,Republican,Soldier,US Military Academy,72.8,52.7
+82,Ulysses S. Grant, December 4,1871,1871_December_4.txt,8,1869.0,46.0,Illinois,214," 3,013,650 "," 5,722,440 ",294,403.0,Republican,Soldier,US Military Academy,72.8,52.7
+83,Ulysses S. Grant, December 2,1872,1872_December_2.txt,8,1869.0,46.0,Illinois,214," 3,013,650 "," 5,722,440 ",294,403.0,Republican,Soldier,US Military Academy,72.8,52.7
+84,Ulysses S. Grant, December 1,1873,1873_December_1.txt,8,1869.0,46.0,Illinois,214," 3,013,650 "," 5,722,440 ",294,403.0,Republican,Soldier,US Military Academy,72.8,52.7
+85,Ulysses S. Grant, December 7,1874,1874_December_7.txt,8,1869.0,46.0,Illinois,214," 3,013,650 "," 5,722,440 ",294,403.0,Republican,Soldier,US Military Academy,72.8,52.7
+86,Ulysses S. Grant, December 7,1875,1875_December_7.txt,8,1869.0,46.0,Illinois,214," 3,013,650 "," 5,722,440 ",294,403.0,Republican,Soldier,US Military Academy,72.8,52.7
+87,Ulysses S. Grant, December 5,1876,1876_December_5.txt,8,1869.0,46.0,Illinois,214," 3,013,650 "," 5,722,440 ",294,403.0,Republican,Soldier,US Military Academy,72.8,52.7
+88,Rutherford B. Hayes, December 3,1877,1877_December_3.txt,4,1877.0,54.0,Ohio,185," 4,034,311 "," 8,413,101 ",369,477.0,Republican,Lawyer,Kenyon,50.1,48.0
+89,Rutherford B. Hayes, December 2,1878,1878_December_2.txt,4,1877.0,54.0,Ohio,185," 4,034,311 "," 8,413,101 ",369,477.0,Republican,Lawyer,Kenyon,50.1,48.0
+90,Rutherford B. Hayes, December 1,1879,1879_December_1.txt,4,1877.0,54.0,Ohio,185," 4,034,311 "," 8,413,101 ",369,477.0,Republican,Lawyer,Kenyon,50.1,48.0
+91,Rutherford B. Hayes, December 6,1880,1880_December_6.txt,4,1877.0,54.0,Ohio,185," 4,034,311 "," 8,413,101 ",369,477.0,Republican,Lawyer,Kenyon,50.1,48.0
+92,Chester A. Arthur, December 6,1881,1881_December_6.txt,3,1881.0,50.0,New York,NA(),NA(),NA(),NA(),423.0,Republican,Lawyer,Union,NA(),NA()
+93,Chester A. Arthur, December 4,1882,1882_December_4.txt,3,1881.0,50.0,New York,NA(),NA(),NA(),NA(),423.0,Republican,Lawyer,Union,NA(),NA()
+94,Chester A. Arthur, December 4,1883,1883_December_4.txt,3,1881.0,50.0,New York,NA(),NA(),NA(),NA(),423.0,Republican,Lawyer,Union,NA(),NA()
+95,Chester A. Arthur, December 1,1884,1884_December_1.txt,3,1881.0,50.0,New York,NA(),NA(),NA(),NA(),423.0,Republican,Lawyer,Union,NA(),NA()
+96,Grover Cleveland, December 8,1885,1885_December_8.txt,4,1885.0,47.0,New York,219," 4,874,621 "," 10,049,754 ",401,576.0,Democrat,Lawyer,None,54.6,48.5
+98,Grover Cleveland, December 6,1886,1886_December_6.txt,4,1885.0,47.0,New York,219," 4,874,621 "," 10,049,754 ",401,576.0,Democrat,Lawyer,None,54.6,48.5
+100,Grover Cleveland, December 6,1887,1887_December_6.txt,4,1885.0,47.0,New York,219," 4,874,621 "," 10,049,754 ",401,576.0,Democrat,Lawyer,None,54.6,48.5
+102,Grover Cleveland, December 3,1888,1888_December_3.txt,4,1885.0,47.0,New York,219," 4,874,621 "," 10,049,754 ",401,576.0,Democrat,Lawyer,None,54.6,48.5
+104,Benjamin Harrison, December 3,1889,1889_December_3.txt,4,1889.0,55.0,Indiana,233,5443892.0," 11,383,320 ",401,426.0,Republican,Lawyer,Miami,58.1,47.8
+105,Benjamin Harrison, December 1,1890,1890_December_1.txt,4,1889.0,55.0,Indiana,233,5443892.0," 11,383,320 ",401,426.0,Republican,Lawyer,Miami,58.1,47.8
+106,Benjamin Harrison, December 9,1891,1891_December_9.txt,4,1889.0,55.0,Indiana,233,5443892.0," 11,383,320 ",401,426.0,Republican,Lawyer,Miami,58.1,47.8
+107,Benjamin Harrison, December 6,1892,1892_December_6.txt,4,1889.0,55.0,Indiana,233,5443892.0," 11,383,320 ",401,426.0,Republican,Lawyer,Miami,58.1,47.8
+108,William McKinley, December 6,1897,1897_December_6.txt,4,1897.0,54.0,Ohio,271," 7,108,480 "," 13,935,738 ",447,601.0,Republican,Lawyer,Allegheny College,60.6,51.0
+109,William McKinley, December 5,1898,1898_December_5.txt,4,1897.0,54.0,Ohio,271," 7,108,480 "," 13,935,738 ",447,601.0,Republican,Lawyer,Allegheny College,60.6,51.0
+110,William McKinley, December 5,1899,1899_December_5.txt,4,1897.0,54.0,Ohio,271," 7,108,480 "," 13,935,738 ",447,601.0,Republican,Lawyer,Allegheny College,60.6,51.0
+111,William McKinley, December 3,1900,1900_December_3.txt,4,1897.0,54.0,Ohio,271," 7,108,480 "," 13,935,738 ",447,601.0,Republican,Lawyer,Allegheny College,60.6,51.0
+112,Theodore Roosevelt, December 3,1901,1901_December_3.txt,8,1901.0,42.0,New York,NA(),NA(),NA(),NA(),810.0,Republican,Author,Harvard,NA(),NA()
+113,Theodore Roosevelt, December 2,1902,1902_December_2.txt,8,1901.0,42.0,New York,NA(),NA(),NA(),NA(),810.0,Republican,Author,Harvard,NA(),NA()
+114,Theodore Roosevelt, December 7,1903,1903_December_7.txt,8,1901.0,42.0,New York,NA(),NA(),NA(),NA(),810.0,Republican,Author,Harvard,NA(),NA()
+115,Theodore Roosevelt, December 6,1904,1904_December_6.txt,8,1901.0,42.0,New York,NA(),NA(),NA(),NA(),810.0,Republican,Author,Harvard,NA(),NA()
+116,Theodore Roosevelt, December 5,1905,1905_December_5.txt,8,1901.0,42.0,New York,NA(),NA(),NA(),NA(),810.0,Republican,Author,Harvard,NA(),NA()
+117,Theodore Roosevelt, December 3,1906,1906_December_3.txt,8,1901.0,42.0,New York,NA(),NA(),NA(),NA(),810.0,Republican,Author,Harvard,NA(),NA()
+118,Theodore Roosevelt, December 3,1907,1907_December_3.txt,8,1901.0,42.0,New York,NA(),NA(),NA(),NA(),810.0,Republican,Author,Harvard,NA(),NA()
+119,Theodore Roosevelt, December 8,1908,1908_December_8.txt,8,1901.0,42.0,New York,NA(),NA(),NA(),NA(),810.0,Republican,Author,Harvard,NA(),NA()
+120,William H. Taft, December 7,1909,1909_December_7.txt,,,,,,,,,,,,,,
+121,William H. Taft, December 6,1910,1910_December_6.txt,,,,,,,,,,,,,,
+122,William H. Taft, December 5,1911,1911_December_5.txt,,,,,,,,,,,,,,
+123,William H. Taft, December 3,1912,1912_December_3.txt,,,,,,,,,,,,,,
+124,Woodrow Wilson, December 2,1913,1913_December_2.txt,8,1913.0,56.0,New Jersey,435," 6,293,152 "," 15,040,963 ",531,723.0,Democrat,Educator,Princeton,81.9,41.8
+125,Woodrow Wilson, December 8,1914,1914_December_8.txt,8,1913.0,56.0,New Jersey,435," 6,293,152 "," 15,040,963 ",531,723.0,Democrat,Educator,Princeton,81.9,41.8
+126,Woodrow Wilson, December 7,1915,1915_December_7.txt,8,1913.0,56.0,New Jersey,435," 6,293,152 "," 15,040,963 ",531,723.0,Democrat,Educator,Princeton,81.9,41.8
+127,Woodrow Wilson, December 5,1916,1916_December_5.txt,8,1913.0,56.0,New Jersey,435," 6,293,152 "," 15,040,963 ",531,723.0,Democrat,Educator,Princeton,81.9,41.8
+128,Woodrow Wilson, December 4,1917,1917_December_4.txt,8,1913.0,56.0,New Jersey,435," 6,293,152 "," 15,040,963 ",531,723.0,Democrat,Educator,Princeton,81.9,41.8
+129,Woodrow Wilson, December 2,1918,1918_December_2.txt,8,1913.0,56.0,New Jersey,435," 6,293,152 "," 15,040,963 ",531,723.0,Democrat,Educator,Princeton,81.9,41.8
+130,Woodrow Wilson, December 2,1919,1919_December_2.txt,8,1913.0,56.0,New Jersey,435," 6,293,152 "," 15,040,963 ",531,723.0,Democrat,Educator,Princeton,81.9,41.8
+131,Woodrow Wilson, December 7,1920,1920_December_7.txt,8,1913.0,56.0,New Jersey,435," 6,293,152 "," 15,040,963 ",531,723.0,Democrat,Educator,Princeton,81.9,41.8
+132,Warren Harding, December 6,1921,1921_December_6.txt,,,,,,,,,,,,,,
+133,Warren Harding, December 8,1922,1922_December_8.txt,,,,,,,,,,,,,,
+134,Calvin Coolidge, December 6,1923,1923_December_6.txt,6,1923.0,51.0,Massachusetts,NA(),NA(),NA(),NA(),451.0,Republican,Lawyer,Amherst,NA(),NA()
+135,Calvin Coolidge, December 3,1924,1924_December_3.txt,6,1923.0,51.0,Massachusetts,NA(),NA(),NA(),NA(),451.0,Republican,Lawyer,Amherst,NA(),NA()
+136,Calvin Coolidge, December 8,1925,1925_December_8.txt,6,1923.0,51.0,Massachusetts,NA(),NA(),NA(),NA(),451.0,Republican,Lawyer,Amherst,NA(),NA()
+137,Calvin Coolidge, December 7,1926,1926_December_7.txt,6,1923.0,51.0,Massachusetts,NA(),NA(),NA(),NA(),451.0,Republican,Lawyer,Amherst,NA(),NA()
+138,Calvin Coolidge, December 6,1927,1927_December_6.txt,6,1923.0,51.0,Massachusetts,NA(),NA(),NA(),NA(),451.0,Republican,Lawyer,Amherst,NA(),NA()
+139,Calvin Coolidge, December 4,1928,1928_December_4.txt,6,1923.0,51.0,Massachusetts,NA(),NA(),NA(),NA(),451.0,Republican,Lawyer,Amherst,NA(),NA()
+140,Herbert Hoover, December 3,1929,1929_December_3.txt,4,1929.0,54.0,California,444," 21,411,991 "," 36,790,364 ",531,400.0,Republican,Engineer,Stanford,83.6,58.2
+141,Herbert Hoover, December 2,1930,1930_December_2.txt,4,1929.0,54.0,California,444," 21,411,991 "," 36,790,364 ",531,400.0,Republican,Engineer,Stanford,83.6,58.2
+142,Herbert Hoover, December 8,1931,1931_December_8.txt,4,1929.0,54.0,California,444," 21,411,991 "," 36,790,364 ",531,400.0,Republican,Engineer,Stanford,83.6,58.2
+143,Herbert Hoover, December 6,1932,1932_December_6.txt,4,1929.0,54.0,California,444," 21,411,991 "," 36,790,364 ",531,400.0,Republican,Engineer,Stanford,83.6,58.2
+144,Franklin D. Roosevelt, January 3,1934,1934_January_3.txt,,,,,,,,,,,,,,
+145,Franklin D. Roosevelt, January 4,1935,1935_January_4.txt,,,,,,,,,,,,,,
+146,Franklin D. Roosevelt, January 3,1936,1936_January_3.txt,,,,,,,,,,,,,,
+147,Franklin D. Roosevelt, January 6,1937,1937_January_6.txt,,,,,,,,,,,,,,
+148,Franklin D. Roosevelt, January 3,1938,1938_January_3.txt,,,,,,,,,,,,,,
+149,Franklin D. Roosevelt, January 4,1939,1939_January_4.txt,,,,,,,,,,,,,,
+150,Franklin D. Roosevelt, January 3,1940,1940_January_3.txt,,,,,,,,,,,,,,
+151,Franklin D. Roosevelt, January 6,1941,1941_January_6.txt,,,,,,,,,,,,,,
+152,Franklin D. Roosevelt, January 6,1942,1942_January_6.txt,,,,,,,,,,,,,,
+153,Franklin D. Roosevelt, January 7,1943,1943_January_7.txt,,,,,,,,,,,,,,
+154,Franklin D. Roosevelt, January 11,1944,1944_January_11.txt,,,,,,,,,,,,,,
+155,Franklin D. Roosevelt, January 6,1945,1945_January_6.txt,,,,,,,,,,,,,,
+156,Harry S. Truman, January 21,1946,1946_January_21.txt,8,1945.0,60.0,Missouri,NA(),NA(),NA(),NA(),753.0,Democrat,Businessman,None,NA(),NA()
+157,Harry S. Truman, January 6,1947,1947_January_6.txt,8,1945.0,60.0,Missouri,NA(),NA(),NA(),NA(),753.0,Democrat,Businessman,None,NA(),NA()
+158,Harry S. Truman, January 7,1948,1948_January_7.txt,8,1945.0,60.0,Missouri,NA(),NA(),NA(),NA(),753.0,Democrat,Businessman,None,NA(),NA()
+159,Harry S. Truman, January 5,1949,1949_January_5.txt,8,1945.0,60.0,Missouri,NA(),NA(),NA(),NA(),753.0,Democrat,Businessman,None,NA(),NA()
+160,Harry S. Truman, January 4,1950,1950_January_4.txt,8,1945.0,60.0,Missouri,NA(),NA(),NA(),NA(),753.0,Democrat,Businessman,None,NA(),NA()
+161,Harry S. Truman, January 8,1951,1951_January_8.txt,8,1945.0,60.0,Missouri,NA(),NA(),NA(),NA(),753.0,Democrat,Businessman,None,NA(),NA()
+162,Harry S. Truman, January 9,1952,1952_January_9.txt,8,1945.0,60.0,Missouri,NA(),NA(),NA(),NA(),753.0,Democrat,Businessman,None,NA(),NA()
+163,Harry S. Truman, January 7,1953,1953_February_2.txt,8,1945.0,60.0,Missouri,NA(),NA(),NA(),NA(),753.0,Democrat,Businessman,None,NA(),NA()
+164,Dwight D. Eisenhower, February 2,1953,1953_January_7.txt,8,1953.0,62.0,New York,442," 33,936,137 "," 61,551,118 ",531,699.0,Republican,Soldier,US Military Academy,83.2,55.1
+165,Dwight D. Eisenhower, January 7,1954,1954_January_7.txt,8,1953.0,62.0,New York,442," 33,936,137 "," 61,551,118 ",531,699.0,Republican,Soldier,US Military Academy,83.2,55.1
+166,Dwight D. Eisenhower, January 6,1955,1955_January_6.txt,8,1953.0,62.0,New York,442," 33,936,137 "," 61,551,118 ",531,699.0,Republican,Soldier,US Military Academy,83.2,55.1
+167,Dwight D. Eisenhower, January 5,1956,1956_January_5.txt,8,1953.0,62.0,New York,442," 33,936,137 "," 61,551,118 ",531,699.0,Republican,Soldier,US Military Academy,83.2,55.1
+168,Dwight D. Eisenhower, January 10,1957,1957_January_10.txt,8,1953.0,62.0,New York,442," 33,936,137 "," 61,551,118 ",531,699.0,Republican,Soldier,US Military Academy,83.2,55.1
+169,Dwight D. Eisenhower, January 9,1958,1958_January_9.txt,8,1953.0,62.0,New York,442," 33,936,137 "," 61,551,118 ",531,699.0,Republican,Soldier,US Military Academy,83.2,55.1
+170,Dwight D. Eisenhower, January 9,1959,1959_January_9.txt,8,1953.0,62.0,New York,442," 33,936,137 "," 61,551,118 ",531,699.0,Republican,Soldier,US Military Academy,83.2,55.1
+171,Dwight D. Eisenhower, January 7,1960,1960_January_7.txt,8,1953.0,62.0,New York,442," 33,936,137 "," 61,551,118 ",531,699.0,Republican,Soldier,US Military Academy,83.2,55.1
+172,Dwight D. Eisenhower, January 12,1961,1961_January_12.txt,8,1953.0,62.0,New York,442," 33,936,137 "," 61,551,118 ",531,699.0,Republican,Soldier,US Military Academy,83.2,55.1
+173,John F. Kennedy, January 30,1961,1961_January_30.txt,3,1961.0,43.0,Massachusetts,303," 34,221,344 "," 68,828,960 ",537,704.0,Democrat,Author,Harvard,56.4,49.7
+174,John F. Kennedy, January 11,1962,1962_January_11.txt,3,1961.0,43.0,Massachusetts,303," 34,221,344 "," 68,828,960 ",537,704.0,Democrat,Author,Harvard,56.4,49.7
+175,John F. Kennedy, January 14,1963,1963_January_14.txt,3,1961.0,43.0,Massachusetts,303," 34,221,344 "," 68,828,960 ",537,704.0,Democrat,Author,Harvard,56.4,49.7
+176,Lyndon B. Johnson, January 8,1964,1964_January_8.txt,5,1963.0,55.0,Texas,NA(),NA(),NA(),NA(),655.0,Democrat,Teacher,Southwest Texas State,NA(),NA()
+177,Lyndon B. Johnson, January 4,1965,1965_January_4.txt,5,1963.0,55.0,Texas,NA(),NA(),NA(),NA(),655.0,Democrat,Teacher,Southwest Texas State,NA(),NA()
+178,Lyndon B. Johnson, January 12,1966,1966_January_12.txt,5,1963.0,55.0,Texas,NA(),NA(),NA(),NA(),655.0,Democrat,Teacher,Southwest Texas State,NA(),NA()
+179,Lyndon B. Johnson, January 10,1967,1967_January_10.txt,5,1963.0,55.0,Texas,NA(),NA(),NA(),NA(),655.0,Democrat,Teacher,Southwest Texas State,NA(),NA()
+180,Lyndon B. Johnson, January 17,1968,1968_January_17.txt,5,1963.0,55.0,Texas,NA(),NA(),NA(),NA(),655.0,Democrat,Teacher,Southwest Texas State,NA(),NA()
+181,Lyndon B. Johnson, January 14,1969,1969_January_14.txt,5,1963.0,55.0,Texas,NA(),NA(),NA(),NA(),655.0,Democrat,Teacher,Southwest Texas State,NA(),NA()
+182,Richard Nixon, January 22,1970,1970_January_22.txt,,,,,,,,,,,,,,
+183,Richard Nixon, January 22,1971,1971_January_22.txt,,,,,,,,,,,,,,
+184,Richard Nixon, January 20,1972,1972_January_20.txt,,,,,,,,,,,,,,
+185,Richard Nixon, February 2,1973,1973_February_2.txt,,,,,,,,,,,,,,
+186,Richard Nixon, January 30,1974,1974_January_30.txt,,,,,,,,,,,,,,
+187,Gerald R. Ford, January 15,1975,1975_January_15.txt,,,,,,,,,,,,,,
+188,Gerald R. Ford, January 19,1976,1976_January_19.txt,,,,,,,,,,,,,,
+189,Gerald R. Ford, January 12,1977,1977_January_12.txt,,,,,,,,,,,,,,
+190,Jimmy Carter, January 19,1978,1978_January_19.txt,4,1977.0,52.0,Georgia,297," 40,830,763 "," 81,555,889 ",538,518.0,Democrat,Businessman,US Naval Academy,55.2,50.1
+191,Jimmy Carter, January 25,1979,1979_January_25.txt,4,1977.0,52.0,Georgia,297," 40,830,763 "," 81,555,889 ",538,518.0,Democrat,Businessman,US Naval Academy,55.2,50.1
+192,Jimmy Carter, January 21,1980,1980_January_21.txt,4,1977.0,52.0,Georgia,297," 40,830,763 "," 81,555,889 ",538,518.0,Democrat,Businessman,US Naval Academy,55.2,50.1
+193,Jimmy Carter, January 16,1981,1981_January_16.txt,4,1977.0,52.0,Georgia,297," 40,830,763 "," 81,555,889 ",538,518.0,Democrat,Businessman,US Naval Academy,55.2,50.1
+194,Ronald Reagan, January 26,1982,1982_January_26.txt,8,1981.0,69.0,California,489," 43,904,153 "," 86,515,221 ",538,634.0,Republican,Actor,Eureka College,90.9,50.7
+195,Ronald Reagan, January 25,1983,1983_January_25.txt,8,1981.0,69.0,California,489," 43,904,153 "," 86,515,221 ",538,634.0,Republican,Actor,Eureka College,90.9,50.7
+196,Ronald Reagan, January 25,1984,1984_January_25.txt,8,1981.0,69.0,California,489," 43,904,153 "," 86,515,221 ",538,634.0,Republican,Actor,Eureka College,90.9,50.7
+197,Ronald Reagan, February 6,1985,1985_February_6.txt,8,1981.0,69.0,California,489," 43,904,153 "," 86,515,221 ",538,634.0,Republican,Actor,Eureka College,90.9,50.7
+198,Ronald Reagan, February 4,1986,1986_February_4.txt,8,1981.0,69.0,California,489," 43,904,153 "," 86,515,221 ",538,634.0,Republican,Actor,Eureka College,90.9,50.7
+199,Ronald Reagan, January 27,1987,1987_January_27.txt,8,1981.0,69.0,California,489," 43,904,153 "," 86,515,221 ",538,634.0,Republican,Actor,Eureka College,90.9,50.7
+200,Ronald Reagan, January 25,1988,1988_January_25.txt,8,1981.0,69.0,California,489," 43,904,153 "," 86,515,221 ",538,634.0,Republican,Actor,Eureka College,90.9,50.7
+201,George H.W. Bush, January 31,1990,1990_January_31.txt,,,,,,,,,,,,,,
+202,George H.W. Bush, January 29,1991,1991_January_29.txt,,,,,,,,,,,,,,
+203,George H.W. Bush, January 28,1992,1992_January_28.txt,,,,,,,,,,,,,,
+204,William J. Clinton, January 25,1994,1994_January_25.txt,,,,,,,,,,,,,,
+205,William J. Clinton, January 24,1995,1995_January_24.txt,,,,,,,,,,,,,,
+206,William J. Clinton, January 23,1996,1996_January_23.txt,,,,,,,,,,,,,,
+207,William J. Clinton, February 4,1997,1997_February_4.txt,,,,,,,,,,,,,,
+208,William J. Clinton, January 27,1998,1998_January_27.txt,,,,,,,,,,,,,,
+209,William J. Clinton, January 19,1999,1999_January_19.txt,,,,,,,,,,,,,,
+210,William J. Clinton, January 27,2000,2000_January_27.txt,,,,,,,,,,,,,,
+211,George W. Bush, February 27,2001,2001_February_27.txt,8,2001.0,54.0,Texas,271," 50,460,110 "," 105,417,258 ",538,,Republican,Businessman,Yale,50.4,47.9
+212,George W. Bush, September 20,2001,2001_September_20.txt,8,2001.0,54.0,Texas,271," 50,460,110 "," 105,417,258 ",538,,Republican,Businessman,Yale,50.4,47.9
+213,George W. Bush, January 29,2002,2002_January_29.txt,8,2001.0,54.0,Texas,271," 50,460,110 "," 105,417,258 ",538,,Republican,Businessman,Yale,50.4,47.9
+214,George W. Bush, January 28,2003,2003_January_28.txt,8,2001.0,54.0,Texas,271," 50,460,110 "," 105,417,258 ",538,,Republican,Businessman,Yale,50.4,47.9
+215,George W. Bush, January 20,2004,2004_January_20.txt,8,2001.0,54.0,Texas,271," 50,460,110 "," 105,417,258 ",538,,Republican,Businessman,Yale,50.4,47.9
+216,George W. Bush, February 2,2005,2005_February_2.txt,8,2001.0,54.0,Texas,271," 50,460,110 "," 105,417,258 ",538,,Republican,Businessman,Yale,50.4,47.9
+217,George W. Bush, January 31,2006,2006_January_31.txt,8,2001.0,54.0,Texas,271," 50,460,110 "," 105,417,258 ",538,,Republican,Businessman,Yale,50.4,47.9
+218,George W. Bush, January 23,2007,2007_January_23.txt,8,2001.0,54.0,Texas,271," 50,460,110 "," 105,417,258 ",538,,Republican,Businessman,Yale,50.4,47.9
+219,George W. Bush, January 28,2008,2008_January_28.txt,8,2001.0,54.0,Texas,271," 50,460,110 "," 105,417,258 ",538,,Republican,Businessman,Yale,50.4,47.9
+220,Barack Obama, February 24,2009,2009_February_24.txt,n/a,2009.0,47.0,Illinois,365," 69,492,376 "," 129,438,754 ",538,,Democrat,Lawyer,Columbia University,67.8,53.7
+221,Barack Obama, January 27,2010,2010_January_27.txt,n/a,2009.0,47.0,Illinois,365," 69,492,376 "," 129,438,754 ",538,,Democrat,Lawyer,Columbia University,67.8,53.7
+222,Barack Obama, January 25,2011,2011_January_25.txt,n/a,2009.0,47.0,Illinois,365," 69,492,376 "," 129,438,754 ",538,,Democrat,Lawyer,Columbia University,67.8,53.7
+223,Barack Obama, January 24,2012,2012_January_24.txt,n/a,2009.0,47.0,Illinois,365," 69,492,376 "," 129,438,754 ",538,,Democrat,Lawyer,Columbia University,67.8,53.7
+224,Barack Obama, February 12,2013,2013_February_12.txt,n/a,2009.0,47.0,Illinois,365," 69,492,376 "," 129,438,754 ",538,,Democrat,Lawyer,Columbia University,67.8,53.7
+225,Barack Obama, January 28,2014,2014_January_28.txt,n/a,2009.0,47.0,Illinois,365," 69,492,376 "," 129,438,754 ",538,,Democrat,Lawyer,Columbia University,67.8,53.7
+226,Barack Obama, January 20,2015,2015_January_20.txt,n/a,2009.0,47.0,Illinois,365," 69,492,376 "," 129,438,754 ",538,,Democrat,Lawyer,Columbia University,67.8,53.7
+227,Barack Obama, January 12,2016,2016_January_12.txt,n/a,2009.0,47.0,Illinois,365," 69,492,376 "," 129,438,754 ",538,,Democrat,Lawyer,Columbia University,67.8,53.7
