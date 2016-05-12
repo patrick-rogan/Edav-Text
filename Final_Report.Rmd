@@ -1,12 +1,14 @@
 ---
-title: "Final_Report"
-author: "Team"
-date: "May 11, 2016"
+title: ": STAT 4701 Project 4"
+author: "Shuni Fang, Robert Minnich, Patrick Rogan, Hiroaki Suzuki, Gary Sztajnman, Yaoru Yi"
+date: "May 13, 2016"
 output: html_document
 ---
 
 #Introduction
+<center>
 <IMG SRC="figs/US-Presidents-Games.jpg" float = "left" ALT="image">
+</center>
 
 ```{r,warning=F,echo = FALSE,  Eval = TRUE, message= FALSE, results="hide", fig.align='center'}
 library(knitr)
@@ -32,7 +34,6 @@ colors_year = df[,12]
 
 ```
 
-
 ##Document Term Matrix Visualization
 Text can be an extremely difficult data type to visualize. Within a document term matrix (DTM) there can be tens of thousands of words, associated with only a handful of documents. This creates a very sparse matrix that is hard to conceptualize. One way to combat the sparsity is to use dimension reduction techniques in order to see if relationships are available. 
 
@@ -43,13 +44,17 @@ All three of these forms used only the Document Term Matrix and did reductions f
 This data includes each president's speech, so one president can appear in the data multiple times.
 ###Political Party
 First we look into the Political Party to see if we can find any distinct relationships between how a party speaks during their Presidential Speeches. This could be possible because typically the government has always been divided into two ideals, power for the states, and power for the federal government.
+<center>
 <IMG SRC="figs/Dimension_Plots_Party.png" float = "left" ALT="image">
+</center>
 
 From this figure we can see that for PCA we can see some clustering of the Democrats and the Republicans. W can also see the Federalist, Deomocrat-Republican in a right group on the lower left portion of the PCA Cluster. For MDS we scan see some similar groups as PCA but for T-SNEW there is no visible pattern between political parties.
 
 We further explore this area by investigating the sentiment of presidential speeches by party. Here we only compare the modern Democratic and Republican parties which have existed in their current incarnations since 1852.  
 
+<center>
 <IMG SRC="figs/S_Party.png" float = "left" ALT="image">
+</center>
 
 Sentiment score was calculated by taking all words in a speech, determining the sentiment of each individual word based on two corpora of positive and negative words, summing all positive words and negative words, and then taking the difference between total positive sentiment and total negative sentiment words.  
 
@@ -58,22 +63,27 @@ While there does note appear to be any inherent differences in the distributions
 ###Presidential Rating
 We also wanted to investigate the speeches towards their overall presidential rating. It could be that Presidents who are doing well, have a positive outlook on the country and have a more positive message. We computed the quantiles of the presidential ratings an then grouped them by the different groups of percentiles as indicated by the legend.
 
+<center>
 <IMG SRC="figs/Dimension_Plots_Rating.png" float = "left" ALT="image">
+</center>
 We can see in PCA and MDS that there does seem to be a tight grouping on the +50% of the presidents and somewhat for the -50%. T-SNE again does not show any significant pattern. 
 
 ###Presidential Year
 Presidential year was also a potentially interesting area to look into. The presidents of the united states have had many different challenges throughout the history of America and could show significant patterns in the words that they choose for the speech.
 
 The legend below shows the color of the points based on year: 
+<center>
 <IMG SRC="figs/Dimension_Plots_Years_Legend.png" float = "left" ALT="image">
 <IMG SRC="figs/Dimension_Plots_Years.png" float = "left" ALT="image">
+</center>
 
 We can see from this image we can see much better groupings than for the Political Parties and the Ratings. This is most likely due to the trends, problems and speech changes over time and is most likely reflected in the words that the have chosen. 
 
 To get an idea of what words might be causing this change we can look at an Importance Plot that was generated using Random Forests, in order to predict the year based on which words they have chosen in their speech. Many of these point to some notion of time, either the word itself, or how old the word usage may be. For instance, today addressing the Congressional body as "Gentleman" is very incorrect because in todays government it is made up of men and women, while in the earlier history it was made up of only men. We can see Korea, which could be allow the Random Forests to identify presidents that were leading the country during the Korean War.  
 
+<center>
 <IMG SRC="figs/ImportancePlot_Years_50.png" float = "left" ALT="image">
-
+</center>
 
 ```{r,warning=F,echo = FALSE,  Eval = TRUE, message= FALSE, results="hide", fig.align='center'}
 names = df[,10]
@@ -90,13 +100,14 @@ We also wanted to investigate this in the 3rd dimension. This was done to see if
 The darker the color, the older the speech. 
 
 ####Pan to Zoon, Click and drag to rotate
+<center>
 <IMG SRC="figs/Dimension_Plots_Years_Legend.png" float = "left" ALT="image">
+
 ```{r webgl=TRUE, echo = FALSE,  Eval = TRUE, message= FALSE, results="hide", fig.align='center'}
 padding = 0.1
 zoom = 0.65
 #type = "s"
 size = 5
-
 
 xmin1 = min(df1$MDS1) + padding
 ymin1 = min(df1$MDS2) + padding
@@ -145,10 +156,6 @@ next3d(current = NA, clear = TRUE, reuse = F)
 plot3d(df1,col = colors_year, size = size, xlim = xlim1, ylim = ylim1, zlim = zlim1)
 title3d("MDS")
 
-
-
-
-
 next3d(current = NA, clear = TRUE, reuse = F)
 plot3d(df2,col = colors_year, size = size)
 
@@ -158,17 +165,16 @@ title3d("PCA")
 #plot3d(df3,col = colors_year, size = 5, xlim = xlim3, ylim = ylim3, zlim = zlim3)
 #title3d("TSNE")
 
-
-
-
-
 ```
+</center>
 As before we can see some clustering between the different years of the speeches. MDS however has enough spread where we plotted MDS only, along with the names of the presidents at each speech.
 
 The darker the color, the older the speech. 
 
 ####Pan to Zoon, Click and drag to rotate
+<center>
 <IMG SRC="figs/Dimension_Plots_Years_Legend.png" float = "left" ALT="image">
+<center>
 ```{r webgl=TRUE, echo = FALSE,  Eval = TRUE, message= FALSE, results="hide", fig.align='center'}
 open3d()
 zoom = 0.65
@@ -193,7 +199,9 @@ The outliers of the plot are also interesting. Truman, Taft, Carter, Polk, which
 
 We conclude this analysis by investigating the impact of poor economic conditions with the sentiment of the speech. We looked at all speeched from 1857 to present (the time period for which we have macroeconomic data for the United States) and determined which of these speeches were given in periods of economic recession. 
 
+<center>
 <IMG SRC="figs/S_Econ.png" float = "left" ALT="image">
+</center>
 
 Much like our sentiment analysis of speech by political party, we see that almost all speeches contain many more positive words than negative ones. These two analyses together are indicative of the unrelentingly positive tone of presidential speeches.  
 
@@ -201,6 +209,7 @@ Much like our sentiment analysis of speech by political party, we see that almos
 
 The following heatmap visualization tells the frequency of top 10 words that appear in each president's speech. In each pixel box, readers will see information of president, word and its frequency. (The X-axis didn't show all words due to the plot size, but readers are able to see the detailed information when hovering over the heatmap.)
 <br />
+<center>
 ```{r,warning=F,echo = FALSE, Eval = TRUE, message= FALSE}
 library(ggplot2)
 library(plotly)
@@ -213,3 +222,4 @@ heatm <- plot_ly(z = top10word_matrix, type = "heatmap",x = word_union,
   layout(margin = list(l = 150,b = 100), xaxis=list(title="words"), yaxis=list(title="presidents"), title = "Top 10 words of presidents' speech")
 heatm
 ```
+</center>
