@@ -47,7 +47,7 @@ First we look into the Political Party to see if we can find any distinct relati
 <center>
 <IMG SRC="figs/Dimension_Plots_Party.png" float = "left" ALT="image">
 </center>
-
+<br>
 From this figure we can see that for PCA we can see some clustering of the Democrats and the Republicans. W can also see the Federalist, Deomocrat-Republican in a right group on the lower left portion of the PCA Cluster. For MDS we scan see some similar groups as PCA but for T-SNEW there is no visible pattern between political parties.
 
 We further explore this area by investigating the sentiment of presidential speeches by party. Here we only compare the modern Democratic and Republican parties which have existed in their current incarnations since 1852.  
@@ -66,6 +66,7 @@ We also wanted to investigate the speeches towards their overall presidential ra
 <center>
 <IMG SRC="figs/Dimension_Plots_Rating.png" float = "left" ALT="image">
 </center>
+<br>
 We can see in PCA and MDS that there does seem to be a tight grouping on the +50% of the presidents and somewhat for the -50%. T-SNE again does not show any significant pattern. 
 
 ###Presidential Year
@@ -76,7 +77,7 @@ The legend below shows the color of the points based on year:
 <IMG SRC="figs/Dimension_Plots_Years_Legend.png" float = "left" ALT="image">
 <IMG SRC="figs/Dimension_Plots_Years.png" float = "left" ALT="image">
 </center>
-
+<br>
 We can see from this image we can see much better groupings than for the Political Parties and the Ratings. This is most likely due to the trends, problems and speech changes over time and is most likely reflected in the words that the have chosen. 
 
 To get an idea of what words might be causing this change we can look at an Importance Plot that was generated using Random Forests, in order to predict the year based on which words they have chosen in their speech. Many of these point to some notion of time, either the word itself, or how old the word usage may be. For instance, today addressing the Congressional body as "Gentleman" is very incorrect because in todays government it is made up of men and women, while in the earlier history it was made up of only men. We can see Korea, which could be allow the Random Forests to identify presidents that were leading the country during the Korean War.  
@@ -102,7 +103,8 @@ The darker the color, the older the speech.
 ####Pan to Zoon, Click and drag to rotate
 <center>
 <IMG SRC="figs/Dimension_Plots_Years_Legend.png" float = "left" ALT="image">
-
+</center>
+<center>
 ```{r webgl=TRUE, echo = FALSE,  Eval = TRUE, message= FALSE, results="hide", fig.align='center'}
 padding = 0.1
 zoom = 0.65
@@ -174,6 +176,7 @@ The darker the color, the older the speech.
 ####Pan to Zoon, Click and drag to rotate
 <center>
 <IMG SRC="figs/Dimension_Plots_Years_Legend.png" float = "left" ALT="image">
+</center>
 <center>
 ```{r webgl=TRUE, echo = FALSE,  Eval = TRUE, message= FALSE, results="hide", fig.align='center'}
 open3d()
@@ -189,9 +192,8 @@ plot3d(df1,col = colors_year, size = size, type = type)
 text3d(df1, texts = names,cex= text_size, col = "black",useFreeType = TRUE,adj = 1.5)
 title3d("MDS")
 view3d( theta = 0, phi = -60)
-
-
 ```
+</center>
 
 We can see that the more recent presidents, Obama, Bush and Clinton are very close to each other for all of their speeches. They are interestingly closer to the older presidents (Jefferson, Washington, Adams etc) than many of the other presidents throughout history.
 
