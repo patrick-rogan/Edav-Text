@@ -69,6 +69,88 @@ We also wanted to investigate the speeches towards their overall presidential ra
 <br>
 We can see in PCA and MDS that there does seem to be a tight grouping on the +50% of the presidents and somewhat for the -50%. T-SNE again does not show any significant pattern. 
 
+We then look at the relationship between Sentiment Score and Ratings Points.
+
+<center>
+```{r,warning=F,echo = FALSE, Eval = TRUE, message= FALSE}
+require('dplyr')
+require('SnowballC')
+require('tm')
+require('xlsx')
+require('zoo')
+require('plyr')
+require('plotly')
+
+load("dtm.Rda")
+load("tdm.Rda")
+load("docs.Rda")
+information = read.csv('President_Info3.csv', header=T)
+
+# Sentiment analysis based on: 
+# 
+# http://www.r-bloggers.com/sentiment-analysis-on-donald-trump-using-r-and-tableau/
+#   With positive/negative words from:
+#   
+#   Minqing Hu and Bing Liu. "Mining and Summarizing Customer Reviews." 
+#       Proceedings of the ACM SIGKDD International Conference on Knowledge 
+#       Discovery and Data Mining (KDD-2004), Aug 22-25, 2004, Seattle, 
+#       Washington, USA
+
+positives= readLines("data/positive-words.txt")
+negatives = readLines("data/negative-words.txt")
+
+# Merge strings of speech content to one string containing all the words in the speech
+fullSpeeches = list()
+for (i in 1:length(docs)){
+  fullSpeeches[i] = paste(docs[[i]]$content, sep="", collapse=" ")
+}
+
+# Calculate simple sentiment scores. This function compares the words 
+# in a speech against two corpora of positive and negative words and then
+# takes the difference between positive and negative words
+sentiment_scores = function(speech, positive_words, negative_words){
+  scores = c()
+  for (i in 1:length(speech)){
+    word_list = strsplit(as.character(speech[i]), " +")
+    words = unlist(word_list)
+    # compare words to the dictionaries of positive & negative terms
+    positive.matches = match(words, positive_words)
+    negative.matches = match(words, negative_words)
+    # get the position of the matched term or NA
+    # we just want a TRUE/FALSE
+    positive_matches = !is.na(positive.matches)
+    negative_matches = !is.na(negative.matches)
+    # final score
+    scores[i] = sum(positive_matches) - sum(negative_matches)
+  }
+  return(scores)
+}
+
+# Finally we scatter speech sentiment against presidential popularity 
+information$allScores = sentiment_scores(fullSpeeches, positives, negatives)
+
+f <- list(
+  size = 18
+)
+x <- list(
+  title = "Sentiment Score",
+  titlefont = f
+)
+y <- list(
+  title = "Rating Points",
+  titlefont = f
+)
+
+sentPop <- plot_ly(data = information, x = allScores, y = Rating.points, mode = "markers",
+        color = Political.Party)  %>% 
+        layout(xaxis = x, yaxis = y, title = "Ratings Points vs Sentiment Score")
+sentPop
+```
+</center>
+<br>
+
+Here we do not see an obvious relationship; the variables are only slightly correlated with $\rho$ = -0.180. Based on this result and the results of PCA, MDS and T-SNE analysis, we believe that any relationship that may exist between Rating Points and the nature of State of the Union address would be due to more complex features than the simple measure of the difference between the number of positive and negative sentiment words.  
+
 ###Presidential Year
 Presidential year was also a potentially interesting area to look into. The presidents of the united states have had many different challenges throughout the history of America and could show significant patterns in the words that they choose for the speech.
 

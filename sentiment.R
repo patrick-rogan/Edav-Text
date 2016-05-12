@@ -4,6 +4,7 @@ require('tm')
 require('xlsx')
 require('zoo')
 require('plyr')
+require('plotly')
 
 # Read in data, the corpus of speeches and presidental information 
 load("dtm.Rda")
@@ -107,11 +108,6 @@ hist(scoreNormal, col=rgb(0,0,1,0.5), add=T)
 legend("topright", c("Normal Conditions","Recession"), fill=c("blue", "red"))
 box()
 dev.off()
-#dtm_recession= dtm[recessionIndices, ]
-#tdm_recession = tdm[, recessionIndices]
-
-#dtm_normal = dtm[normalIndices, ]
-#tdm_normal = tdm[, normalIndices]
 
 # Now do a similar analysis for the democratic and republican parties. Note that these
 # two parties have only existed in their current incarnation since 1852.
@@ -128,8 +124,3 @@ hist(scoreDemocrat, col=rgb(0,0,1,0.5),add=T)
 legend("topright", c("Democrat", "Republican"), fill=c("blue", "red"))
 box()
 dev.off()
-
-# Finally we scatter speech sentiment against presidential popularity 
-
-
-
