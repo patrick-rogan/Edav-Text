@@ -29,6 +29,7 @@ docs = tm_map(docs, toSpace, "@")
 #docs = tm_map(docs, toSpace, ")")
 docs = tm_map(docs, toSpace, ";")
 docs = tm_map(docs, toSpace, "--")
+docs = tm_map(docs, toSpace, " +")
 
 docs <- tm_map(docs, content_transformer(tolower))
 docs = tm_map(docs, removeNumbers)
@@ -39,11 +40,17 @@ docs = tm_map(docs,stemDocument)
 docs = tm_map(docs,stripWhitespace)
 docs = tm_map(docs,PlainTextDocument)
 
+for(j in seq(docs))   
+{   
+  docs[[j]]$content <- docs[[j]]$content[which(docs[[j]]$content != "")]
+}   
+
 dtm = DocumentTermMatrix(docs)
 tdm = TermDocumentMatrix(docs)
 
 save(dtm, file="dtm.Rda")
 save(tdm, file="tdm.Rda")
+save(docs, file = "docs.Rda")
 
 #load("dtm.Rda")
 #load("tdm.Rda")
