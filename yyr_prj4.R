@@ -25,7 +25,7 @@ presidents = read.csv('President_info3.csv')
 
 
 ### build some dictionaries 
-president_names <- levels(presidents$name)
+president_names <- as.character(unique(presidents$name))
 
 text_president <- vector(mode="list", length=length(president_names))
 for (i in 1:length(president_names)){
@@ -39,6 +39,7 @@ for (i in 1:length(president_names)){
   freq_president[[i]] = colSums(as.matrix(text_president[[i]]))
 }  
 names(freq_president) <- president_names
+
 
 ### word cloud 
 #### this part will save plots on your current directory 
@@ -62,3 +63,38 @@ for (i in 1:length(president_names)){
             random.order=FALSE,main="Title")  
   dev.off()
 }
+
+
+### more dictionaries. to build up the top 10 words matrix. 
+top10word_president <- vector(mode="list", length=length(president_names))
+word_union <- c()
+for (i in 1:length(president_names)){
+  top10word_president[[i]] = sort(freq_president[[i]][freq_president[[i]]>0], decreasing = T)[0:10]
+  word_union = union(word_union,names(top10word_president[[i]]))
+}  
+names(top10word_president) <- president_names
+
+top10word_matrix <- matrix(0, nrow = length(president_names), ncol = length(word_union))
+rownames(top10word_matrix) <- president_names
+colnames(top10word_matrix) <- word_union
+for (i in 1:length(president_names)){
+  words_tmp = names(top10word_president[[i]])
+  for (j in 1:10){
+     word_tmp = words_tmp[j]
+     word_idx = which(word_union==word_tmp)
+     top10word_matrix[i,word_idx] = top10word_president[[i]][[j]]
+  }
+}
+
+## save 
+#save(top10word_matrix,file="top10word_matrix.Rda")
+
+load("top10word_matrix.Rda")
+library(plotly)
+plot_ly(z = top10word_matrix, type = "heatmap",x = word_union,
+                 y=president_names,colorbar = list(title = "word count"))%>%
+  layout(margin = list(l = 150,b = 100), xaxis=list(title="words"), yaxis=list(title="presidents"), title = "Top 10 words of presidents' speech")
+
+
+
+

@@ -18,7 +18,7 @@ library(ggfortify)
 library(ggplot2)
 library(RColorBrewer)
 
-setwd("/Users/bobminnich/Documents/Columbia/Courses/DataVisualization/Edav-Text")
+#setwd("/Users/bobminnich/Documents/Columbia/Courses/DataVisualization/Edav-Text")
 df = read.csv("3D_Plotting.csv")
 df = df[,-1]
 df = df[complete.cases(df),]
@@ -184,3 +184,22 @@ view3d( theta = 0, phi = -60)
 We can see that the more recent presdients, Obama,Bush and Clinton are very close to eachother for all of their speeches. They are interestingly closer to the older presidents (Jefferson, Washington, Adams etc) than many of the other presidents throughout history.
 
 The outliers of the plot are also interesting. Truman, Taft, Carter, Polk, which exist very far from the large cluster of presdients. While researching these presidents nothing in particular set them apart from the others. Some unique facts about them though are that Truman was presdient during World War 2, Taft became Cheif Justice of the Supreme Courts, Polk based his campaign on a promise not re-run as presdient, and Carter negotiated peace talks between Egypy and Israel.
+
+
+
+###Decode: Top 10 frequent words
+
+The following heatmap visualization tells the frequency of top 10 words that appear in each president's speech. In each pixel box, readers will see information of president, word and its frequency. (The X-axis didn't show all words due to the plot size, but readers are able to see the detailed information when hovering over the heatmap.)
+<br />
+```{r,warning=F,echo = FALSE, Eval = TRUE, message= FALSE}
+library(ggplot2)
+library(plotly)
+load("top10word_matrix.Rda")
+word_union <- colnames(top10word_matrix)
+president_names <- rownames(top10word_matrix)
+
+heatm <- plot_ly(z = top10word_matrix, type = "heatmap",x = word_union,
+                 y=president_names,colorbar = list(title = "word count"))%>%
+  layout(margin = list(l = 150,b = 100), xaxis=list(title="words"), yaxis=list(title="presidents"), title = "Top 10 words of presidents' speech")
+heatm
+```
