@@ -1,5 +1,5 @@
 ---
-title: ": STAT 4701 Project 4"
+title: "A Textual Analysis of US State of the Union Addresses: STAT 4701 Project 4"
 author: "Shuni Fang, Robert Minnich, Patrick Rogan, Hiroaki Suzuki, Gary Sztajnman, Yaoru Yi"
 date: "May 13, 2016"
 output: html_document
@@ -639,7 +639,6 @@ for (i in 1:length(obama_year)){
 save(top10word_matrix_obama,file="data/top_words_obama.Rda")
 
 load("data/top_words_obama.Rda")
-library(plotly)
 plot_ly(z = top10word_matrix_obama, type = "heatmap",x = word_union,
         y=obama_year,colorbar = list(title = "word count"))%>%
   layout(margin = list(l = 150,b = 100), xaxis=list(title="words"), yaxis=list(title="Tenure of President Obama"), title = "Top words in President Obama's speeches")
@@ -688,7 +687,6 @@ for (i in 1:length(bush_year)){
 save(top10word_matrix_bush,file="data/top_words_bush.Rda")
 
 load("data/top_words_bush.Rda")
-library(plotly)
 plot_ly(z = top10word_matrix_bush, type = "heatmap", x = word_union,
         y=bush_year,colorbar = list(title = "word count"))%>%
   layout(margin = list(l = 150,b = 100), xaxis=list(title="words"), yaxis=list(title="Tenure of President Bush"), title = "Top words in President Bush's speeches")
