@@ -6,7 +6,7 @@ output: html_document
 ---
 
 #Introduction
-Throughout this report we will be exploring a data set consists of State of the Union speeches from George Washington (1790) to Barack Obama (2016). Within this report there were several areas that we wanted to explore such as visualizing the speeches, how the speeches might be related in terms of Political Party and Presidential Rating, and also how the speeches evolve in time. We will show this through multiple methods including dimension reduction, sentimental analysis, word frequencies and cosine similarities. We will start with visualizations using different methods of dimension reduction to explore Political Party, Presidential Rating and Year of the speech.
+Throughout this report we will be exploring a data set that consists of State of the Union speeches from George Washington (1790) to Barack Obama (2016). Within this report there were several areas that we wanted to explore such as visualizing the speeches, how the speeches might be related in terms of Political Party and Presidential Rating, and also how the speeches evolve in time. We will show this through multiple methods including dimension reduction, sentimental analysis, word frequencies and cosine similarities. We will start with visualizations using different methods of dimension reduction to explore Political Party, Presidential Rating and Year of the speech.
 
 <center>
 <IMG SRC="figs/US-Presidents-Games.jpg" float = "left" ALT="image">
