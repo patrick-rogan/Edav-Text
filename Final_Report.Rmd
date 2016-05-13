@@ -24,7 +24,7 @@ library(RColorBrewer)
 #setwd("/Users/bobminnich/Documents/Columbia/Courses/DataVisualization/Edav-Text")
 
 #Read in and load CSV
-df = read.csv("3D_Plotting.csv")
+df = read.csv("data/3D_Plotting.csv")
 df = df[,-1]
 df = df[complete.cases(df),]
 df1 = df[,c(1,2,3)]
@@ -85,10 +85,10 @@ require('zoo')
 require('plyr')
 require('plotly')
 
-load("dtm.Rda")
-load("tdm.Rda")
-load("docs.Rda")
-information = read.csv('President_Info3.csv', header=T)
+load("data/dtm.Rda")
+load("data/tdm.Rda")
+load("data/docs.Rda")
+information = read.csv('data/President_Info3.csv', header=T)
 
 # Sentiment analysis based on: 
 # 
@@ -305,7 +305,7 @@ In the previous part, we confirmed that some presidents are clustered while some
 ```{r,warning=F,echo = FALSE, Eval = TRUE, message= FALSE}
 library(ggplot2)
 library(plotly)
-load("top10word_matrix.Rda")
+load("data/top10word_matrix.Rda")
 word_union <- colnames(top10word_matrix)
 president_names <- rownames(top10word_matrix)
 
@@ -339,10 +339,10 @@ if (!require("htmlTable")) {
 
 #setwd("C:\\Users\\HS\\Desktop\\school\\classes\\VIS\\HW_TEXT\\git2\\Edav-Text\\")
 
-load("dtm.Rda")
-load("tdm.Rda")
+load("data/dtm.Rda")
+load("data/tdm.Rda")
 
-information = read.csv('President_Info3.csv', header=T)
+information = read.csv('data/President_Info3.csv', header=T)
 
 index_republican = information$index[which(information$Political.Party == "Republican")]
 index_democrat = information$index[which(information$Political.Party == "Democrat")]
@@ -421,8 +421,8 @@ wordcloud(names(mfreq_d),mfreq_d,
 
 Here, we will see similarity of speeches between Democrat and Republican by using cosine similarity. Cosine similarity can show the similarity between two vectors, and can be expressed in a range from 0 to 1. 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
-load("cosine_dist_ranking_df_rank_merged.Rda")
-load("html_output_cosine.Rda")
+load("data/cosine_dist_ranking_df_rank_merged.Rda")
+load("data/html_output_cosine.Rda")
 
 d_d = mean( cosine_dist_ranking_df_rank_merged[ (cosine_dist_ranking_df_rank_merged$row_party == "Democratic") &
                                     (cosine_dist_ranking_df_rank_merged$col_party == "Democratic")  , ]$freq )
