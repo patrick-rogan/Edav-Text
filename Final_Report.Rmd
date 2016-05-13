@@ -37,20 +37,21 @@ colors_year = df[,12]
 ```
 
 ##Document Term Matrix Visualization
-Text can be an extremely difficult data type to visualize. Within a document term matrix (DTM) there can be tens of thousands of words, associated with only a handful of documents. This creates a very sparse matrix that is hard to conceptualize. One way to combat the sparsity is to use dimension reduction techniques in order to see if relationships are available. 
+Text can be an extremely difficult data type to visualize. Within a document term matrix (DTM) there can be tens of thousands of words, associated with only a handful of documents. This creates a very sparse matrix that is hard to conceptualize. One way to combat the sparsity is to use dimension reduction techniques in order to see if relationships are more apparent in different representations of the data.
 
-Three separate forms of reduction were used on this data set, which includes Principal Component Analysis (PCA) ,Multidimensional Scaling (MDS) and t-distributed Stochastic Neighbor Embedding(T-SNE). We want to compare these different methods to try and determine if the speeches of the presidents can help indicate different attributes.
+Three separate forms of reduction were used on this data set, which includes Principal Component Analysis (PCA), Multidimensional Scaling (MDS) and t-distributed Stochastic Neighbor Embedding (T-SNE). We want to compare these different methods to try and determine if the speeches can be grouped in these alternative representations. 
 
-All three of these forms used only the Document Term Matrix and did reductions from that data to two dimensions.
+All three of these forms used only the Document Term Matrix. In all cases we reduced the data down to two dimensions to simplify the resulting visualizations. 
 
 This data includes each president's speech, so one president can appear in the data multiple times.
+
 ###Political Party
 First we look into the Political Party to see if we can find any distinct relationships between how a party speaks during their Presidential Speeches. This could be possible because typically the government has always been divided into two ideals, power for the states, and power for the federal government.
 <center>
 <IMG SRC="figs/Dimension_Plots_Party.png" float = "left" ALT="image">
 </center>
 <br>
-From this figure we can see that for PCA we can see some clustering of the Democrats and the Republicans. W can also see the Federalist, Democrat-Republican in a right group on the lower left portion of the PCA Cluster. For MDS we scan see some similar groups as PCA but for T-SNEW there is no visible pattern between political parties.
+From this figure we can see that for PCA we can see some clustering of the Democrats and the Republicans. W can also see the Federalist, Democrat-Republican in a right group on the lower left portion of the PCA Cluster. For MDS we scan see some similar groups as PCA but for T-SNE there is no visible difference between political parties.
 
 We further explore this area by investigating the sentiment of presidential speeches by party. Here we only compare the modern Democratic and Republican parties which have existed in their current incarnations since 1852.  
 
@@ -62,96 +63,383 @@ Sentiment score was calculated by taking all words in a speech, determining the 
 
 While there does note appear to be any inherent differences in the distributions of sentiment between the two parties, we do note that the vast majority of speeches appear to contain a majority of positive words.
 
-###Presidential Rating
-We also wanted to investigate the speeches towards their overall presidential rating. It could be that Presidents who are doing well, have a positive outlook on the country and have a more positive message. We computed the quantiles of the presidential ratings an then grouped them by the different groups of percentiles as indicated by the legend.
-
-<center>
-<IMG SRC="figs/Dimension_Plots_Rating.png" float = "left" ALT="image">
-</center>
-<br>
-We can see in PCA and MDS that there does seem to be a tight grouping on the +50% of the presidents and somewhat for the -50%. T-SNE again does not show any significant pattern. 
-
-We then look at the relationship between Sentiment Score and Ratings Points.
-
-<center>
-```{r,warning=F,echo = FALSE, Eval = TRUE, message= FALSE}
-require('dplyr')
-require('SnowballC')
-require('tm')
-require('xlsx')
-require('zoo')
-require('plyr')
-require('plotly')
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+if (!require("wordcloud")) {
+  install.packages("wordcloud")
+}
+if (!require("dplyr")) {
+  install.packages("dplyr")
+}
+if (!require("scales")) {
+  install.packages("scales")
+}
+if (!require("tm")) {
+  install.packages("tm")
+}
+if (!require("proxy")) {
+  install.packages("proxy")
+}
+if (!require("htmlTable")) {
+  install.packages("htmlTable")
+}
 
 load("data/dtm.Rda")
 load("data/tdm.Rda")
-load("data/docs.Rda")
+
 information = read.csv('data/President_Info3.csv', header=T)
 
-# Sentiment analysis based on: 
+index_republican = information$index[which(information$Political.Party == "Republican")]
+index_democrat = information$index[which(information$Political.Party == "Democrat")]
+
+dtm_republican = dtm[index_republican, ]
+tdm_republican = tdm[, index_republican]
+
+dtm_democrat = dtm[index_democrat, ]
+tdm_democrat = tdm[, index_democrat]
+
+```
+
+We continue to compare difference between Democratic Party and Republican Party looking at 88 speeches of presidents at Republican, and 84 speeches of presidents at Democrat.
+
+Here are TOP30 words that were used at speeches of Republican.
+<p style="text-align: left; font-size:20px; font-weight:bold;">Words frequency of Republican</p>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+mfreq_r = colSums(as.matrix(dtm_republican))
+mfreq_r_df = data.frame(word=names(mfreq_r),freq=mfreq_r)
+mfreq_r_df = mfreq_r_df[order(mfreq_r_df$freq, decreasing=TRUE), ]
+mfreq_r_df = mfreq_r_df[1:30, ]
+mfreq_r_df = data.frame(id=c(1:30), word=mfreq_r_df$word, freq=mfreq_r_df$freq)
+ggplot(mfreq_r_df, aes(x = reorder(word, id), y = freq)) +
+  geom_bar(stat = "identity") +
+  xlab("Words") +
+  ylab("Frequency") +
+  theme(axis.text.x=element_text(size=12,color='black',fac='bold.italic',angle=45,hjust=0.5))
+```
+
+Here are TOP30 words that were used at speeches of Democrat
+<p style="text-align: left; font-size:20px; font-weight:bold;">Words frequency of Democrat</p>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+mfreq_d = colSums(as.matrix(dtm_democrat))
+mfreq_d_df = data.frame(word=names(mfreq_d),freq=mfreq_d)
+mfreq_d_df = mfreq_d_df[order(mfreq_d_df$freq, decreasing=TRUE), ]
+mfreq_d_df = mfreq_d_df[1:30, ]
+mfreq_d_df = data.frame(id=c(1:30), word=mfreq_d_df$word, freq=mfreq_d_df$freq)
+ggplot(mfreq_d_df, aes(x = reorder(word, id), y = freq)) +
+  geom_bar(stat = "identity") +
+  xlab("Words") +
+  ylab("Frequency") +
+  theme(axis.text.x=element_text(size=12,color='black',fac='bold.italic',angle=45,hjust=0.5))
+```
+
+As we can see above, TOP 3 words were "will"", "state", "govern" at both Republican and Democrat. 
+In addition, we can see that almost same words such as as "congress", and "American" were used at both parties.
+
+By using Word Cloud, we can see similarities between both parties visually.
+
+<p style="text-align: left; font-size:20px; font-weight:bold;">Wordcloud of Republican Speakers</p>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+# republic
+set.seed(111)
+min_freq = 500
+wordcloud(names(mfreq_r),mfreq_r,
+          min.freq=min_freq,
+          scale=c(4,0.5),
+          colors=brewer.pal(8, "Dark2"),
+          random.color=FALSE, 
+          random.order=FALSE)
+```
+
+<p style="text-align: left; font-size:20px; font-weight:bold;">Wordcloud of Democrat Speakers</p>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+# democrat
+set.seed(111)
+min_freq = 450
+wordcloud(names(mfreq_d),mfreq_d,
+          min.freq=min_freq,
+          scale=c(4,0.5),
+          colors=brewer.pal(8, "Dark2"),
+          random.color=FALSE, 
+          random.order=FALSE)
+```
+
+Here, we will see similarity of speeches between Democrat and Republican by using cosine similarity. Cosine similarity can show the similarity between two vectors, and can be expressed in a range from 0 to 1. 
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+## compare similarity of documents between republic and democratic
+# tdm_republican_mat <- as.matrix(tdm_republican)
+# colnames(tdm_republican_mat) = index_republican
+# tdm_democrat_mat <- as.matrix(tdm_democrat)
+# colnames(tdm_democrat_mat) = index_democrat
 # 
-# http://www.r-bloggers.com/sentiment-analysis-on-donald-trump-using-r-and-tableau/
-#   With positive/negative words from:
-#   
-#   Minqing Hu and Bing Liu. "Mining and Summarizing Customer Reviews." 
-#       Proceedings of the ACM SIGKDD International Conference on Knowledge 
-#       Discovery and Data Mining (KDD-2004), Aug 22-25, 2004, Seattle, 
-#       Washington, USA
+# tdm_merge_mat = merge(tdm_republican_mat, tdm_democrat_mat, by = "row.names")
+# tdm_merge_mat = tdm_merge_mat[, 2:dim(tdm_merge_mat)[2]]
+# cosine_dist_mat <- as.matrix(dist(t(tdm_merge_mat), method = "cosine"))
+# 
+# 
+# tmp_row = c(0)
+# tmp_col = c(0)
+# tmp_fre = c(0)
+# tmp_which = c("")
+# for(i in 1:dim(cosine_dist_mat)[1]) {
+#   for(j in i:dim(cosine_dist_mat)[1]) {
+#     tmp_row[length(tmp_row)+1] = i
+#     tmp_col[length(tmp_col)+1] = j
+#     tmp_val = ""
+#     tmp_which[length(length)+1] = 
+#     tmp_fre[length(tmp_fre)+1] = cosine_dist_mat[i,j]
+#   }
+# }
+# #cosine_dist_ranking_df = data.frame(pair=tmp_pair_index, freq=tmp_frequency)
+# cosine_dist_ranking_df = data.frame(row=tmp_row, col=tmp_col, freq=tmp_fre)
+# 
+# cosine_dist_ranking_df_rank = cosine_dist_ranking_df[order(cosine_dist_ranking_df$freq, decreasing=TRUE), ]
+# cosine_dist_ranking_df_rank_top20 = cosine_dist_ranking_df_rank[1:20, ]
+# 
+# 
+# which_party_row = c()
+# which_party_col = c()
+# for(i in 1:dim(cosine_dist_ranking_df_rank)[1]) {
+#   if ( cosine_dist_ranking_df_rank[c(i), 'row'] %in% index_democrat ) {  
+#     which_party_row[length(which_party_row) + 1] = "Democratic"
+#   } else {
+#     which_party_row[length(which_party_row) + 1] = "Republican"
+#   }
+#   if ( cosine_dist_ranking_df_rank[c(i), 'col'] %in% index_democrat ) {  
+#     which_party_col[length(which_party_col) + 1] = "Democratic"
+#   } else {
+#     which_party_col[length(which_party_col) + 1] = "Republican"
+#   }  
+# }
+# 
+# cosine_dist_ranking_df_rank_merged = cbind(cosine_dist_ranking_df_rank, 
+#                                            data.frame(row_party=which_party_row), 
+#                                            data.frame(col_party=which_party_col)
+#                                            )
+# save(cosine_dist_ranking_df_rank_merged, file="cosine_dist_ranking_df_rank_merged.Rda")
+load("data/cosine_dist_ranking_df_rank_merged.Rda")
 
-positives= readLines("data/positive-words.txt")
-negatives = readLines("data/negative-words.txt")
+# html_output_cosine = cosine_dist_ranking_df_rank_merged[1:30, ]
+# 
+# for(i in 1:dim(html_output_cosine)[1]) {
+#   html_output_cosine[c(i), "name1"] = paste(
+#     as.character(information[information$index == html_output_cosine[c(i), "row"], ]$name), 
+#     as.character(html_output_cosine[c(i), "row_party"]),
+#     sep = "/"
+#     )
+#   html_output_cosine[c(i), "name2"] = paste(
+#     as.character(information[information$index == html_output_cosine[c(i), "col"], ]$name), 
+#     as.character(html_output_cosine[c(i), "col_party"]), 
+#     sep = "/")
+# }
+#save(html_output_cosine, file="html_output_cosine.Rda")
+load("data/html_output_cosine.Rda")
 
-# Merge strings of speech content to one string containing all the words in the speech
-fullSpeeches = list()
-for (i in 1:length(docs)){
-  fullSpeeches[i] = paste(docs[[i]]$content, sep="", collapse=" ")
-}
+d_d = mean( cosine_dist_ranking_df_rank_merged[ (cosine_dist_ranking_df_rank_merged$row_party == "Democratic") &
+                                    (cosine_dist_ranking_df_rank_merged$col_party == "Democratic")  , ]$freq )
 
-# Calculate simple sentiment scores. This function compares the words 
-# in a speech against two corpora of positive and negative words and then
-# takes the difference between positive and negative words
-sentiment_scores = function(speech, positive_words, negative_words){
-  scores = c()
-  for (i in 1:length(speech)){
-    word_list = strsplit(as.character(speech[i]), " +")
-    words = unlist(word_list)
-    # compare words to the dictionaries of positive & negative terms
-    positive.matches = match(words, positive_words)
-    negative.matches = match(words, negative_words)
-    # get the position of the matched term or NA
-    # we just want a TRUE/FALSE
-    positive_matches = !is.na(positive.matches)
-    negative_matches = !is.na(negative.matches)
-    # final score
-    scores[i] = sum(positive_matches) - sum(negative_matches)
-  }
-  return(scores)
-}
+r_r = mean( cosine_dist_ranking_df_rank_merged[ (cosine_dist_ranking_df_rank_merged$row_party == "Republican") &
+                                            (cosine_dist_ranking_df_rank_merged$col_party == "Republican")  , ]$freq )
 
-# Finally we scatter speech sentiment against presidential popularity 
-information$allScores = sentiment_scores(fullSpeeches, positives, negatives)
+r_d = mean( cosine_dist_ranking_df_rank_merged[ ((cosine_dist_ranking_df_rank_merged$row_party == "Democratic") &
+                                            (cosine_dist_ranking_df_rank_merged$col_party == "Republican")) |
+                                            ((cosine_dist_ranking_df_rank_merged$row_party == "Democratic") &
+                                               (cosine_dist_ranking_df_rank_merged$col_party == "Republican"))
+                                          , ]$freq )
+```
 
-f <- list(
-  size = 18
-)
-x <- list(
-  title = "Sentiment Score",
-  titlefont = f
-)
-y <- list(
-  title = "Rating Points",
-  titlefont = f
-)
-
-sentPop <- plot_ly(data = information, x = allScores, y = Rating.points, mode = "markers",
-        color = Political.Party)  %>% 
-        layout(xaxis = x, yaxis = y, title = "Ratings Points vs Sentiment Score")
-sentPop
+<p style="text-align: left; font-size:20px; font-weight:bold;">Top 30 cosine similarity</p>
+<center>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+# output of the ranking of cosine similarity
+htmlTable(html_output_cosine[1:30, c("name1", "name2", "freq")], rnames = c(1:30))
 ```
 </center>
-<br>
 
-Here we do not see an obvious relationship; the variables are only slightly correlated with $\rho$ = -0.180. Based on this result and the results of PCA, MDS and T-SNE analysis, we believe that any relationship that may exist between Rating Points and the nature of State of the Union address would be due to more complex features than the simple measure of the difference between the number of positive and negative sentiment words.  
+As we can see above, top row is between Democrat and Democrat, but from second row to ninth row, there are combinations between Republican and Democrat. It is interesting to see that Martin Van Buren(Democratic party) has lots of high similarities between many other presidents. The average cosine similarities of speeches between Democrat and Democrat is `r d_d`, while the cosine similarities between Republican and Republican is `r r_r`. The cosine similarities between Republican and Democrat is `r r_d`.
+
+
+Before executing this analysis, we thought that we would be able to see some difference between Democrat and Republican in terms of contents of speeches. According to bar plots and cosine similarities, contents themselves do not have major difference, if we look at speeches from 1790 to 2016. 
+
+Given that we have not found substantial differences in the aggregate, we were interested in seeing how each presidents speeches changed over time. So we selected the two most recent presidents, President Barack Obama (Democrat) and President George W. Bush (Republican), to take a closer look of their words frequencies over their tenure of office, ie. we look at the 8 speeches of President Obama and the 9 speeches of President Bush.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+
+# load data
+load("data/dtm.Rda")
+
+information = read.csv('data/President_Info3.csv', header=T)
+
+index_obama = information$index[which(information$name == "Barack Obama")]
+index_bush = information$index[which(information$name == "George W. Bush")]
+
+dtm_obama = dtm[index_obama, ]
+dtm_bush = dtm[index_bush, ]
+```
+
+Here are TOP10 most frequently used words in speeches of President Obama.
+We can easily tell from the plot that President Obama emphasizes on american/america and job/work, which represent the emphasis on the country and the job market.
+<p style="text-align: left; font-size:20px; font-weight:bold;">Words frequency of President Barack Obama</p>
+
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+# bar plot of top10 words of obama
+obama = as.matrix(dtm_obama)
+mfreq_r = colSums(as.matrix(dtm_obama))
+mfreq_r_df = data.frame(word=names(mfreq_r),freq=mfreq_r)
+mfreq_r_df = mfreq_r_df[order(mfreq_r_df$freq, decreasing=TRUE), ]
+mfreq_r_df = mfreq_r_df[1:10, ]
+mfreq_r_df = data.frame(id=c(1:10), word=mfreq_r_df$word, freq=mfreq_r_df$freq)
+p1 <- ggplot(mfreq_r_df, aes(x = reorder(word, id), y = freq)) +
+  geom_bar(stat = "identity") +
+  xlab("Words") +
+  ylab("Frequency") + theme_minimal() +
+  theme(axis.text.x=element_text(size=12,color='black',fac='bold.italic',angle=45,hjust=0.5))
+p1
+```
+
+Here are TOP10 most frequently used words that in speeches of President Bush. Notice that Bush also frequently used words like "america", "american", "nation", but he does not mention that much about jobs. He uses "applause" most frequently.
+<p style="text-align: left; font-size:20px; font-weight:bold;">Words frequency of President George W. Bush</p>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+# bar plot of top10 words of bush
+bush = as.matrix(dtm_bush)
+mfreq_d = colSums(as.matrix(dtm_bush))
+mfreq_d_df = data.frame(word=names(mfreq_d),freq=mfreq_d)
+mfreq_d_df = mfreq_d_df[order(mfreq_d_df$freq, decreasing=TRUE), ]
+mfreq_d_df = mfreq_d_df[1:10, ]
+mfreq_d_df = data.frame(id=c(1:10), word=mfreq_d_df$word, freq=mfreq_d_df$freq)
+ggplot(mfreq_d_df, aes(x = reorder(word, id), y = freq)) +
+  geom_bar(stat = "identity") +
+  xlab("Words") +
+  ylab("Frequency") + theme_minimal() +
+  theme(axis.text.x=element_text(size=12,color='black',fac='bold.italic',angle=45,hjust=0.5))
+```
+To see similarities in use of words between President Obama and President Bush visually, we use word cloud as shown below.
+
+<p style="text-align: left; font-size:20px; font-weight:bold;">Wordcloud of President Barack Obama</p>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+# word cloud of obama
+set.seed(111)
+min_freq = 80
+wordcloud(names(mfreq_r),mfreq_r,
+          min.freq=min_freq,
+          scale=c(4,0.5),
+          colors=brewer.pal(8, "Dark2"),
+          random.color=FALSE, 
+          random.order=FALSE)
+```
+
+<p style="text-align: left; font-size:20px; font-weight:bold;">Wordcloud of President George W. Bush</p>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+# word cloud of bush
+set.seed(111)
+min_freq = 90
+wordcloud(names(mfreq_d),mfreq_d,
+          min.freq=min_freq,
+          scale=c(4,0.5),
+          colors=brewer.pal(8, "Dark2"),
+          random.color=FALSE, 
+          random.order=FALSE)
+```
+
+Next we look at the top 10 most frequently used words for each year in the presidents' tenure. We use heat map to visualize the frequency of each year. Note that x-axis includes all the top 10 words from each year in the tenure.
+<p style="text-align: left; font-size:20px; font-weight:bold;">Reactive Heatmap of President Barack Obama</p>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+# build dictionaries for obama
+library(plotly)
+
+obama_year <- as.character(unique(information$year_x[which(information$name == "Barack Obama")]))
+
+text_obama <- vector(mode="list", length=length(obama_year))
+for (i in 1:length(obama_year)){
+  index = information[information$year_x==obama_year[i],]$index
+  text_obama[[i]] = dtm[index,]
+}
+names(text_obama) <- obama_year
+
+freq_obama <- vector(mode="list", length=length(obama_year))
+for (i in 1:length(obama_year)){
+  freq_obama[[i]] = colSums(as.matrix(text_obama[[i]]))
+}  
+names(freq_obama) <- obama_year
+
+# heat map for top words of Barack Obama 
+top10word_obama <- vector(mode="list", length=length(obama_year))
+word_union <- c()
+for (i in 1:length(obama_year)){
+  top10word_obama[[i]] = sort(freq_obama[[i]][freq_obama[[i]]>0], decreasing = T)[0:10]
+  word_union = union(word_union,names(top10word_obama[[i]]))
+}  
+names(top10word_obama) <- obama_year
+
+top10word_matrix_obama <- matrix(0, nrow = length(obama_year), ncol = length(word_union))
+rownames(top10word_matrix_obama) <- obama_year
+colnames(top10word_matrix_obama) <- word_union
+for (i in 1:length(obama_year)){
+  words_tmp = names(top10word_obama[[i]])
+  for (j in 1:10){
+    word_tmp = words_tmp[j]
+    word_idx = which(word_union==word_tmp)
+    top10word_matrix_obama[i,word_idx] = top10word_obama[[i]][[j]]
+  }
+}
+
+save(top10word_matrix_obama,file="data/top_words_obama.Rda")
+
+load("data/top_words_obama.Rda")
+plot_ly(z = top10word_matrix_obama, type = "heatmap",x = word_union,
+        y=obama_year,colorbar = list(title = "word count"))%>%
+  layout(margin = list(l = 150,b = 100), xaxis=list(title="words"), yaxis=list(title="Tenure of President Obama"), title = "Top words in President Obama's speeches")
+
+```
+From the above heat map, we can see that President Obama mentioned the word "tax" for 31 in his speech in 2012. But he never mentioned it during any other years in his tenure. Further, from 2010 to 2015, he keeps mentioning "job". In contrast, he did not mention job at all in his 2009 and 2016 speeches.
+
+<p style="text-align: left; font-size:20px; font-weight:bold;">Reactive Heatmap of President George W. Bush</p>
+```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
+# build dictionaries for bush
+bush_year<- as.character(unique(information$year_x[which(information$name == "George W. Bush")]))
+text_bush <- vector(mode="list", length=length(bush_year))
+for (i in 1:length(bush_year)){
+  index = information[information$year_x==bush_year[i],]$index
+  text_bush[[i]] = dtm[index,]
+}
+names(text_bush) <- bush_year
+
+freq_bush <- vector(mode="list", length=length(bush_year))
+for (i in 1:length(bush_year)){
+  freq_bush[[i]] = colSums(as.matrix(text_bush[[i]]))
+}  
+names(freq_bush) <- bush_year
+
+# heatmap for top words of bush 
+top10word_bush <- vector(mode="list", length=length(bush_year))
+word_union_2 <- c()
+for (i in 1:length(bush_year)){
+  top10word_bush[[i]] = sort(freq_bush[[i]][freq_bush[[i]]>0], decreasing = T)[0:10]
+  word_union = union(word_union,names(top10word_bush[[i]]))
+}  
+names(top10word_bush) <- bush_year
+
+top10word_matrix_bush <- matrix(0, nrow = length(bush_year), ncol = length(word_union))
+rownames(top10word_matrix_bush) <- bush_year
+colnames(top10word_matrix_bush) <- word_union
+for (i in 1:length(bush_year)){
+  words_tmp = names(top10word_bush[[i]])
+  for (j in 1:10){
+    word_tmp = words_tmp[j]
+    word_idx = which(word_union==word_tmp)
+    top10word_matrix_bush[i,word_idx] = top10word_bush[[i]][[j]]
+  }
+}
+
+save(top10word_matrix_bush,file="data/top_words_bush.Rda")
+
+load("data/top_words_bush.Rda")
+plot_ly(z = top10word_matrix_bush, type = "heatmap", x = word_union,
+        y=bush_year,colorbar = list(title = "word count"))%>%
+  layout(margin = list(l = 150,b = 100), xaxis=list(title="words"), yaxis=list(title="Tenure of President Bush"), title = "Top words in President Bush's speeches")
+
+```
+The heat map shows that President Bush mentioned the word "tax" for around 20 times during 2001 and 2004 while never mention it in other years. It is not surprising to see that he used "Iraq" for 21 times in his 2007 speech and it is interesting to find that he also used "health" for 18 times during that same speech.
+
+
 
 ###Presidential Year
 Presidential year was also a potentially interesting area to look into. The presidents of the united states have had many different challenges throughout the history of America and could show significant patterns in the words that they choose for the speech.
@@ -292,6 +580,100 @@ We conclude this analysis by investigating the impact of poor economic condition
 
 Much like our sentiment analysis of speech by political party, we see that almost all speeches contain many more positive words than negative ones. These two analyses together are indicative of the unrelentingly positive tone of presidential speeches.  
 
+
+###Presidential Rating
+We also wanted to investigate the speeches towards their overall presidential rating. It could be that Presidents who are doing well, have a positive outlook on the country and have a more positive message. We computed the quantiles of the presidential ratings an then grouped them by the different groups of percentiles as indicated by the legend.
+
+<center>
+<IMG SRC="figs/Dimension_Plots_Rating.png" float = "left" ALT="image">
+</center>
+<br>
+We can see in PCA and MDS that there does seem to be a tight grouping on the +50% of the presidents and somewhat for the -50%. T-SNE again does not show any significant pattern. 
+
+We then look at the relationship between Sentiment Score and Ratings Points.
+
+<center>
+```{r,warning=F,echo = FALSE, Eval = TRUE, message= FALSE}
+require('dplyr')
+require('SnowballC')
+require('tm')
+require('xlsx')
+require('zoo')
+require('plyr')
+require('plotly')
+
+load("data/dtm.Rda")
+load("data/tdm.Rda")
+load("data/docs.Rda")
+information = read.csv('data/President_Info3.csv', header=T)
+
+# Sentiment analysis based on: 
+# 
+# http://www.r-bloggers.com/sentiment-analysis-on-donald-trump-using-r-and-tableau/
+#   With positive/negative words from:
+#   
+#   Minqing Hu and Bing Liu. "Mining and Summarizing Customer Reviews." 
+#       Proceedings of the ACM SIGKDD International Conference on Knowledge 
+#       Discovery and Data Mining (KDD-2004), Aug 22-25, 2004, Seattle, 
+#       Washington, USA
+
+positives= readLines("data/positive-words.txt")
+negatives = readLines("data/negative-words.txt")
+
+# Merge strings of speech content to one string containing all the words in the speech
+fullSpeeches = list()
+for (i in 1:length(docs)){
+  fullSpeeches[i] = paste(docs[[i]]$content, sep="", collapse=" ")
+}
+
+# Calculate simple sentiment scores. This function compares the words 
+# in a speech against two corpora of positive and negative words and then
+# takes the difference between positive and negative words
+sentiment_scores = function(speech, positive_words, negative_words){
+  scores = c()
+  for (i in 1:length(speech)){
+    word_list = strsplit(as.character(speech[i]), " +")
+    words = unlist(word_list)
+    # compare words to the dictionaries of positive & negative terms
+    positive.matches = match(words, positive_words)
+    negative.matches = match(words, negative_words)
+    # get the position of the matched term or NA
+    # we just want a TRUE/FALSE
+    positive_matches = !is.na(positive.matches)
+    negative_matches = !is.na(negative.matches)
+    # final score
+    scores[i] = sum(positive_matches) - sum(negative_matches)
+  }
+  return(scores)
+}
+
+# Finally we scatter speech sentiment against presidential popularity 
+information$allScores = sentiment_scores(fullSpeeches, positives, negatives)
+
+f <- list(
+  size = 18
+)
+x <- list(
+  title = "Sentiment Score",
+  titlefont = f
+)
+y <- list(
+  title = "Rating Points",
+  titlefont = f
+)
+
+sentPop <- plot_ly(data = information, x = allScores, y = Rating.points, mode = "markers",
+        color = Political.Party)  %>% 
+        layout(xaxis = x, yaxis = y, title = "Ratings Points vs Sentiment Score")
+sentPop
+```
+</center>
+<br>
+
+Here we do not see an obvious relationship; the variables are only slightly correlated with $\rho$ = -0.180. Based on this result and the results of PCA, MDS and T-SNE analysis, we believe that any relationship that may exist between Rating Points and the nature of State of the Union address would be due to more complex features than the simple measure of the difference between the number of positive and negative sentiment words.  
+
+
+
 ###Decode: Top 10 frequent words
 
 In the previous part, we confirmed that some presidents are clustered while some are not. Visualizing the top 10 words from each presidents' speeches in a heat map shows the fact that some words appear frequently over years. For instance,'will', 'govern', 'nation' are high frequency words over years. And 'work', 'job', 'secure' are new top words that appear in President Barack Obama's speeches. 
@@ -301,8 +683,6 @@ In the previous part, we confirmed that some presidents are clustered while some
 <br />
 <center>
 ```{r,warning=F,echo = FALSE, Eval = TRUE, message= FALSE}
-library(ggplot2)
-library(plotly)
 load("data/top10word_matrix.Rda")
 word_union <- colnames(top10word_matrix)
 president_names <- rownames(top10word_matrix)
@@ -313,387 +693,6 @@ heatm <- plot_ly(z = top10word_matrix, type = "heatmap",x = word_union,
 heatm
 ```
 </center>
-
-##Text analysis of Republican and Democrat
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-if (!require("wordcloud")) {
-  install.packages("wordcloud")
-}
-if (!require("dplyr")) {
-  install.packages("dplyr")
-}
-if (!require("scales")) {
-  install.packages("scales")
-}
-if (!require("tm")) {
-  install.packages("tm")
-}
-if (!require("proxy")) {
-  install.packages("proxy")
-}
-if (!require("htmlTable")) {
-  install.packages("htmlTable")
-}
-
-#setwd("C:\\Users\\HS\\Desktop\\school\\classes\\VIS\\HW_TEXT\\git2\\Edav-Text\\")
-
-load("data/dtm.Rda")
-load("data/tdm.Rda")
-
-information = read.csv('data/President_Info3.csv', header=T)
-
-index_republican = information$index[which(information$Political.Party == "Republican")]
-index_democrat = information$index[which(information$Political.Party == "Democrat")]
-
-dtm_republican = dtm[index_republican, ]
-tdm_republican = tdm[, index_republican]
-
-dtm_democrat = dtm[index_democrat, ]
-tdm_democrat = tdm[, index_democrat]
-
-```
-
-Here, we would like to compare difference between Democratic Party and Republican Party. 
-We looked at 88 speeches of presidents at Republican, and 84 speeches of presidents at Democrat.
-
-Here are TOP30 words that were used at speeches of Republican.
-<p style="text-align: left; font-size:20px; font-weight:bold;">Words frequency of Republican</p>
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-mfreq_r = colSums(as.matrix(dtm_republican))
-mfreq_r_df = data.frame(word=names(mfreq_r),freq=mfreq_r)
-mfreq_r_df = mfreq_r_df[order(mfreq_r_df$freq, decreasing=TRUE), ]
-mfreq_r_df = mfreq_r_df[1:30, ]
-mfreq_r_df = data.frame(id=c(1:30), word=mfreq_r_df$word, freq=mfreq_r_df$freq)
-ggplot(mfreq_r_df, aes(x = reorder(word, id), y = freq)) +
-  geom_bar(stat = "identity") +
-  xlab("Words") +
-  ylab("Frequency") +
-  theme(axis.text.x=element_text(size=12,color='black',fac='bold.italic',angle=45,hjust=0.5))
-```
-
-Here are TOP30 words that were used at speeches of Democrat
-<p style="text-align: left; font-size:20px; font-weight:bold;">Words frequency of Democrat</p>
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-mfreq_d = colSums(as.matrix(dtm_democrat))
-mfreq_d_df = data.frame(word=names(mfreq_d),freq=mfreq_d)
-mfreq_d_df = mfreq_d_df[order(mfreq_d_df$freq, decreasing=TRUE), ]
-mfreq_d_df = mfreq_d_df[1:30, ]
-mfreq_d_df = data.frame(id=c(1:30), word=mfreq_d_df$word, freq=mfreq_d_df$freq)
-ggplot(mfreq_d_df, aes(x = reorder(word, id), y = freq)) +
-  geom_bar(stat = "identity") +
-  xlab("Words") +
-  ylab("Frequency") +
-  theme(axis.text.x=element_text(size=12,color='black',fac='bold.italic',angle=45,hjust=0.5))
-```
-
-As we can see above, TOP 3 words were "will"", "state", "govern" at both Republican and Democrat. 
-In addition, we can see that almost same words such as as "congress", and "American" were used at both parties.
-
-By using Word Cloud, we can see similarities between both parties visually.
-
-<p style="text-align: left; font-size:20px; font-weight:bold;">Wordcloud of Republic</p>
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-# republic
-set.seed(111)
-min_freq = 500
-wordcloud(names(mfreq_r),mfreq_r,
-          min.freq=min_freq,
-          scale=c(4,0.5),
-          colors=brewer.pal(8, "Dark2"),
-          random.color=FALSE, 
-          random.order=FALSE)
-```
-
-<p style="text-align: left; font-size:20px; font-weight:bold;">Wordcloud of Democrat</p>
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-# democrat
-set.seed(111)
-min_freq = 450
-wordcloud(names(mfreq_d),mfreq_d,
-          min.freq=min_freq,
-          scale=c(4,0.5),
-          colors=brewer.pal(8, "Dark2"),
-          random.color=FALSE, 
-          random.order=FALSE)
-```
-
-Here, we will see similarity of speeches between Democrat and Republican by using cosine similarity. Cosine similarity can show the similarity between two vectors, and can be expressed in a range from 0 to 1. 
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-## compare similarity of documents between republic and democratic
-# tdm_republican_mat <- as.matrix(tdm_republican)
-# colnames(tdm_republican_mat) = index_republican
-# tdm_democrat_mat <- as.matrix(tdm_democrat)
-# colnames(tdm_democrat_mat) = index_democrat
-# 
-# tdm_merge_mat = merge(tdm_republican_mat, tdm_democrat_mat, by = "row.names")
-# tdm_merge_mat = tdm_merge_mat[, 2:dim(tdm_merge_mat)[2]]
-# cosine_dist_mat <- as.matrix(dist(t(tdm_merge_mat), method = "cosine"))
-# 
-# 
-# tmp_row = c(0)
-# tmp_col = c(0)
-# tmp_fre = c(0)
-# tmp_which = c("")
-# for(i in 1:dim(cosine_dist_mat)[1]) {
-#   for(j in i:dim(cosine_dist_mat)[1]) {
-#     tmp_row[length(tmp_row)+1] = i
-#     tmp_col[length(tmp_col)+1] = j
-#     tmp_val = ""
-#     tmp_which[length(length)+1] = 
-#     tmp_fre[length(tmp_fre)+1] = cosine_dist_mat[i,j]
-#   }
-# }
-# #cosine_dist_ranking_df = data.frame(pair=tmp_pair_index, freq=tmp_frequency)
-# cosine_dist_ranking_df = data.frame(row=tmp_row, col=tmp_col, freq=tmp_fre)
-# 
-# cosine_dist_ranking_df_rank = cosine_dist_ranking_df[order(cosine_dist_ranking_df$freq, decreasing=TRUE), ]
-# cosine_dist_ranking_df_rank_top20 = cosine_dist_ranking_df_rank[1:20, ]
-# 
-# 
-# which_party_row = c()
-# which_party_col = c()
-# for(i in 1:dim(cosine_dist_ranking_df_rank)[1]) {
-#   if ( cosine_dist_ranking_df_rank[c(i), 'row'] %in% index_democrat ) {  
-#     which_party_row[length(which_party_row) + 1] = "Democratic"
-#   } else {
-#     which_party_row[length(which_party_row) + 1] = "Republican"
-#   }
-#   if ( cosine_dist_ranking_df_rank[c(i), 'col'] %in% index_democrat ) {  
-#     which_party_col[length(which_party_col) + 1] = "Democratic"
-#   } else {
-#     which_party_col[length(which_party_col) + 1] = "Republican"
-#   }  
-# }
-# 
-# cosine_dist_ranking_df_rank_merged = cbind(cosine_dist_ranking_df_rank, 
-#                                            data.frame(row_party=which_party_row), 
-#                                            data.frame(col_party=which_party_col)
-#                                            )
-# save(cosine_dist_ranking_df_rank_merged, file="cosine_dist_ranking_df_rank_merged.Rda")
-load("data/cosine_dist_ranking_df_rank_merged.Rda")
-
-# html_output_cosine = cosine_dist_ranking_df_rank_merged[1:30, ]
-# 
-# for(i in 1:dim(html_output_cosine)[1]) {
-#   html_output_cosine[c(i), "name1"] = paste(
-#     as.character(information[information$index == html_output_cosine[c(i), "row"], ]$name), 
-#     as.character(html_output_cosine[c(i), "row_party"]),
-#     sep = "/"
-#     )
-#   html_output_cosine[c(i), "name2"] = paste(
-#     as.character(information[information$index == html_output_cosine[c(i), "col"], ]$name), 
-#     as.character(html_output_cosine[c(i), "col_party"]), 
-#     sep = "/")
-# }
-#save(html_output_cosine, file="html_output_cosine.Rda")
-load("data/html_output_cosine.Rda")
-
-d_d = mean( cosine_dist_ranking_df_rank_merged[ (cosine_dist_ranking_df_rank_merged$row_party == "Democratic") &
-                                    (cosine_dist_ranking_df_rank_merged$col_party == "Democratic")  , ]$freq )
-
-r_r = mean( cosine_dist_ranking_df_rank_merged[ (cosine_dist_ranking_df_rank_merged$row_party == "Republican") &
-                                            (cosine_dist_ranking_df_rank_merged$col_party == "Republican")  , ]$freq )
-
-r_d = mean( cosine_dist_ranking_df_rank_merged[ ((cosine_dist_ranking_df_rank_merged$row_party == "Democratic") &
-                                            (cosine_dist_ranking_df_rank_merged$col_party == "Republican")) |
-                                            ((cosine_dist_ranking_df_rank_merged$row_party == "Democratic") &
-                                               (cosine_dist_ranking_df_rank_merged$col_party == "Republican"))
-                                          , ]$freq )
-```
-
-<p style="text-align: left; font-size:20px; font-weight:bold;">Top 30 cosine similarity</p>
-<center>
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-# output of the ranking of cosine similarity
-htmlTable(html_output_cosine[1:30, c("name1", "name2", "freq")], rnames = c(1:30))
-```
-</center>
-
-As we can see above, top row is between Democrat and Democrat, but from second row to ninth row, there are combinations between Republican and Democrat. It is interesting to see that Martin Van Buren(Democratic party) has lots of high similarities between many other presidents. The average cosine similarities of speeches between Democrat and Democrat is `r d_d`, while the cosine similarities between Republican and Republican is `r r_r`. The cosine similarities between Republican and Democrat is `r r_d`.
-
-
-Before executing this analysis, we thought that we could see the clear difference between Democrat and Republican in terms of contents of speeches. According to bar plots and cosine similarities, contents themselves do not have major difference, if we see speeches from 1790 to 2016. From this results, other factors besides contents of speeches might also be related.
-
-# Text Analysis of President Barack Obama and President George W. Bush
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-
-# load data
-load("data/dtm.Rda")
-
-information = read.csv('data/President_Info3.csv', header=T)
-
-index_obama = information$index[which(information$name == "Barack Obama")]
-index_bush = information$index[which(information$name == "George W. Bush")]
-
-dtm_obama = dtm[index_obama, ]
-dtm_bush = dtm[index_bush, ]
-```
-
-We are interested in seeing how each presidents speeches changes overtime. So we pick the two most recent presidents, President Barack Obama and President George W. Bush, to take a closer look of their words frequencies over their tenure of office, ie. we look at the 8 speeches of President Obama and the 9 speeches of President Bush.
-
-Here are TOP10 most frequently used words in speeches of President Obama.
-We can easily tell from the plot that President Obama emphasizes on american/america and job/work, which represent the emphasis on the country and the job market.
-<p style="text-align: left; font-size:20px; font-weight:bold;">Words frequency of President Barack Obama</p>
-
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-# bar plot of top10 words of obama
-obama = as.matrix(dtm_obama)
-mfreq_r = colSums(as.matrix(dtm_obama))
-mfreq_r_df = data.frame(word=names(mfreq_r),freq=mfreq_r)
-mfreq_r_df = mfreq_r_df[order(mfreq_r_df$freq, decreasing=TRUE), ]
-mfreq_r_df = mfreq_r_df[1:10, ]
-mfreq_r_df = data.frame(id=c(1:10), word=mfreq_r_df$word, freq=mfreq_r_df$freq)
-p1 <- ggplot(mfreq_r_df, aes(x = reorder(word, id), y = freq)) +
-  geom_bar(stat = "identity") +
-  xlab("Words") +
-  ylab("Frequency") + theme_minimal() +
-  theme(axis.text.x=element_text(size=12,color='black',fac='bold.italic',angle=45,hjust=0.5))
-p1
-```
-
-Here are TOP10 most frequently used words that in speeches of President Bush. Notice that Bush also frequently used words like "america", "american", "nation", but he does not mention that much about jobs. He uses "applause" most frequently.
-<p style="text-align: left; font-size:20px; font-weight:bold;">Words frequency of President George W. Bush</p>
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-# bar plot of top10 words of bush
-bush = as.matrix(dtm_bush)
-mfreq_d = colSums(as.matrix(dtm_bush))
-mfreq_d_df = data.frame(word=names(mfreq_d),freq=mfreq_d)
-mfreq_d_df = mfreq_d_df[order(mfreq_d_df$freq, decreasing=TRUE), ]
-mfreq_d_df = mfreq_d_df[1:10, ]
-mfreq_d_df = data.frame(id=c(1:10), word=mfreq_d_df$word, freq=mfreq_d_df$freq)
-ggplot(mfreq_d_df, aes(x = reorder(word, id), y = freq)) +
-  geom_bar(stat = "identity") +
-  xlab("Words") +
-  ylab("Frequency") + theme_minimal() +
-  theme(axis.text.x=element_text(size=12,color='black',fac='bold.italic',angle=45,hjust=0.5))
-```
-To see similarities in use of words between President Obama and President Bush visually, we use word cloud as shown below.
-
-<p style="text-align: left; font-size:20px; font-weight:bold;">Wordcloud of President Barack Obama</p>
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-# word cloud of obama
-set.seed(111)
-min_freq = 80
-wordcloud(names(mfreq_r),mfreq_r,
-          min.freq=min_freq,
-          scale=c(4,0.5),
-          colors=brewer.pal(8, "Dark2"),
-          random.color=FALSE, 
-          random.order=FALSE)
-```
-
-<p style="text-align: left; font-size:20px; font-weight:bold;">Wordcloud of President George W. Bush</p>
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-# word cloud of bush
-set.seed(111)
-min_freq = 90
-wordcloud(names(mfreq_d),mfreq_d,
-          min.freq=min_freq,
-          scale=c(4,0.5),
-          colors=brewer.pal(8, "Dark2"),
-          random.color=FALSE, 
-          random.order=FALSE)
-```
-
-Next we look at the top 10 most frequently used words for each year in the presidents' tenure. We use heat map to visualize the frequency of each year. Note that x-axis includes all the top 10 words from each year in the tenure.
-<p style="text-align: left; font-size:20px; font-weight:bold;">Reactive Heatmap of President Barack Obama</p>
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-# build dictionaries for obama
-obama_year <- as.character(unique(information$year_x[which(information$name == "Barack Obama")]))
-
-text_obama <- vector(mode="list", length=length(obama_year))
-for (i in 1:length(obama_year)){
-  index = information[information$year_x==obama_year[i],]$index
-  text_obama[[i]] = dtm[index,]
-}
-names(text_obama) <- obama_year
-
-freq_obama <- vector(mode="list", length=length(obama_year))
-for (i in 1:length(obama_year)){
-  freq_obama[[i]] = colSums(as.matrix(text_obama[[i]]))
-}  
-names(freq_obama) <- obama_year
-
-# heat map for top words of Barack Obama 
-top10word_obama <- vector(mode="list", length=length(obama_year))
-word_union <- c()
-for (i in 1:length(obama_year)){
-  top10word_obama[[i]] = sort(freq_obama[[i]][freq_obama[[i]]>0], decreasing = T)[0:10]
-  word_union = union(word_union,names(top10word_obama[[i]]))
-}  
-names(top10word_obama) <- obama_year
-
-top10word_matrix_obama <- matrix(0, nrow = length(obama_year), ncol = length(word_union))
-rownames(top10word_matrix_obama) <- obama_year
-colnames(top10word_matrix_obama) <- word_union
-for (i in 1:length(obama_year)){
-  words_tmp = names(top10word_obama[[i]])
-  for (j in 1:10){
-    word_tmp = words_tmp[j]
-    word_idx = which(word_union==word_tmp)
-    top10word_matrix_obama[i,word_idx] = top10word_obama[[i]][[j]]
-  }
-}
-
-save(top10word_matrix_obama,file="data/top_words_obama.Rda")
-
-load("data/top_words_obama.Rda")
-plot_ly(z = top10word_matrix_obama, type = "heatmap",x = word_union,
-        y=obama_year,colorbar = list(title = "word count"))%>%
-  layout(margin = list(l = 150,b = 100), xaxis=list(title="words"), yaxis=list(title="Tenure of President Obama"), title = "Top words in President Obama's speeches")
-
-```
-From the above heat map, we can see that President Obama mentioned the word "tax" for 31 in his speech in 2012. But he never mentioned it during any other years in his tenure. Further, from 2010 to 2015, he keeps mentioning "job". In contrast, he did not mention job at all in his 2009 and 2016 speeches.
-
-<p style="text-align: left; font-size:20px; font-weight:bold;">Reactive Heatmap of President George W. Bush</p>
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
-# build dictionaries for bush
-bush_year<- as.character(unique(information$year_x[which(information$name == "George W. Bush")]))
-text_bush <- vector(mode="list", length=length(bush_year))
-for (i in 1:length(bush_year)){
-  index = information[information$year_x==bush_year[i],]$index
-  text_bush[[i]] = dtm[index,]
-}
-names(text_bush) <- bush_year
-
-freq_bush <- vector(mode="list", length=length(bush_year))
-for (i in 1:length(bush_year)){
-  freq_bush[[i]] = colSums(as.matrix(text_bush[[i]]))
-}  
-names(freq_bush) <- bush_year
-
-# heatmap for top words of bush 
-top10word_bush <- vector(mode="list", length=length(bush_year))
-word_union_2 <- c()
-for (i in 1:length(bush_year)){
-  top10word_bush[[i]] = sort(freq_bush[[i]][freq_bush[[i]]>0], decreasing = T)[0:10]
-  word_union = union(word_union,names(top10word_bush[[i]]))
-}  
-names(top10word_bush) <- bush_year
-
-top10word_matrix_bush <- matrix(0, nrow = length(bush_year), ncol = length(word_union))
-rownames(top10word_matrix_bush) <- bush_year
-colnames(top10word_matrix_bush) <- word_union
-for (i in 1:length(bush_year)){
-  words_tmp = names(top10word_bush[[i]])
-  for (j in 1:10){
-    word_tmp = words_tmp[j]
-    word_idx = which(word_union==word_tmp)
-    top10word_matrix_bush[i,word_idx] = top10word_bush[[i]][[j]]
-  }
-}
-
-save(top10word_matrix_bush,file="data/top_words_bush.Rda")
-
-load("data/top_words_bush.Rda")
-plot_ly(z = top10word_matrix_bush, type = "heatmap", x = word_union,
-        y=bush_year,colorbar = list(title = "word count"))%>%
-  layout(margin = list(l = 150,b = 100), xaxis=list(title="words"), yaxis=list(title="Tenure of President Bush"), title = "Top words in President Bush's speeches")
-
-```
-The heat map shows that President Bush mentioned the word "tax" for around 20 times during 2001 and 2004 while never mention it in other years. It is not surprising to see that he used "Iraq" for 21 times in his 2007 speech and it is interesting to find that he also used "health" for 18 times during that same speech.
-
 
 #Conclusion
 Throughout this report we have explored many different methods of understanding textual data. We have seen visualizations using dimension reduction, sentiment analysis and word counts allowing us to gain different perspectives on the information contained in these documents. Many different insights have been discussed and we can see that some of the approaches allow for the discovery of new features, such as dimension reduction and sentiment analysis. These features could help with a machine learning task such as classification or predicting the year.  
