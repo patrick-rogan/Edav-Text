@@ -14,19 +14,22 @@ output: html_document
 library(knitr)
 library(rgl)
 knit_hooks$set(webgl = hook_webgl)
-
 library(bpca)
 library(ggfortify)
 library(ggplot2)
 library(RColorBrewer)
 
 #setwd("/Users/bobminnich/Documents/Columbia/Courses/DataVisualization/Edav-Text")
+
+#Read in and load CSV
 df = read.csv("3D_Plotting.csv")
 df = df[,-1]
 df = df[complete.cases(df),]
 df1 = df[,c(1,2,3)]
 df2 = df[,c(4,5,6)]
 df3 = df[,c(7,8,9)]
+
+#Read in Labels, Parties and Colors
 names = df[,10]
 colors_party = as.character(df[,11])
 colors_year = df[,12]
@@ -193,6 +196,8 @@ zoom = 0.65
 #type = "s"
 size = 5
 
+
+#Create boundaries for each plot
 xmin1 = min(df1$MDS1) + padding
 ymin1 = min(df1$MDS2) + padding
 zmin1 = min(df1$MDS3) + padding
@@ -230,24 +235,17 @@ ylim3 = c(ymin3,ymax3)
 zlim3 = c(zmin3,zmax3)
 
 open3d()
+#Create space for 2 plots
 mfrow3d(1, 2, sharedMouse = TRUE, parent = NA)
-#layout3d(mat, height = rep(c(3, 1), 3), sharedMouse = TRUE)
-
-#next3d()
-#next3d(current = NA, clear = TRUE, reuse = F)
-#next3d(current = NA, clear = TRUE, reuse = F)
 next3d(current = NA, clear = TRUE, reuse = F)
 plot3d(df1,col = colors_year, size = size, xlim = xlim1, ylim = ylim1, zlim = zlim1)
 title3d("MDS")
 
+#Second Plot
 next3d(current = NA, clear = TRUE, reuse = F)
 plot3d(df2,col = colors_year, size = size)
-
 title3d("PCA")
 
-#next3d(current = NA, clear = TRUE, reuse = T)
-#plot3d(df3,col = colors_year, size = 5, xlim = xlim3, ylim = ylim3, zlim = zlim3)
-#title3d("TSNE")
 
 ```
 </center>
@@ -261,19 +259,24 @@ The darker the color, the older the speech.
 </center>
 <center>
 ```{r webgl=TRUE, echo = FALSE,  Eval = TRUE, message= FALSE, results="hide", fig.align='center'}
+
+#3D Plotting
 open3d()
 zoom = 0.65
 type = "p"
 
+#Set parameters of plotting including text and point size
 size = 10
 text_size = 0.5
 font = "FreeMono.ttf"
-plot3d(df1,col = colors_year, size = size, type = type)
-#triangles3d(df1,col = colors_year, size = size, type = type)
 
+#Create Plot
+plot3d(df1,col = colors_year, size = size, type = type)
+#Create Text on Plot
 text3d(df1, texts = names,cex= text_size, col = "black",useFreeType = TRUE,adj = 1.5)
-#text3d(df1, texts = names,cex= text_size, col = "black",useFreeType = FALSE,adj = 1.5)
+#Title
 title3d("MDS")
+#Set View
 view3d( theta = 0, phi = -60)
 ```
 </center>
