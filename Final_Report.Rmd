@@ -36,14 +36,14 @@ colors_year = df[,12]
 
 ```
 
-##Document Term Matrix Visualization
+##Data Visualization
 Text can be an extremely difficult data type to visualize. Within a document term matrix (DTM) there can be tens of thousands of words, associated with only a handful of documents. This creates a very sparse matrix that is hard to conceptualize. One way to combat the sparsity is to use dimension reduction techniques in order to see if relationships are more apparent in different representations of the data.
 
 Three separate forms of reduction were used on this data set, which includes Principal Component Analysis (PCA), Multidimensional Scaling (MDS) and t-distributed Stochastic Neighbor Embedding (T-SNE). We want to compare these different methods to try and determine if the speeches can be grouped in these alternative representations. 
 
 All three of these forms used only the Document Term Matrix. In all cases we reduced the data down to two dimensions to simplify the resulting visualizations. 
 
-This data includes each president's speech, so one president can appear in the data multiple times.
+This data includes each president's speech, so one president can appear in the data multiple times. We perform this analysis in conjunction with other types of text processing/visualization in order to provide a complete overview of the data.
 
 ###Political Party
 First we look into the Political Party to see if we can find any distinct relationships between how a party speaks during their Presidential Speeches. This could be possible because typically the government has always been divided into two ideals, power for the states, and power for the federal government.
