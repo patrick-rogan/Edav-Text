@@ -7,10 +7,10 @@ require('plyr')
 require('plotly')
 
 # Read in data, the corpus of speeches and presidental information 
-load("dtm.Rda")
-load("tdm.Rda")
-load("docs.Rda")
-information = read.csv('President_Info3.csv', header=T)
+load("data/dtm.Rda")
+load("data/tdm.Rda")
+load("data/docs.Rda")
+information = read.csv('data/President_Info3.csv', header=T)
 
 # Read in recession data and then strip out irrelevant lines
 recessions = read.xlsx('data/NBER_chronology.xlsx',sheetIndex =1, header=T)
@@ -27,7 +27,7 @@ recessions = recessions[,1:2]
 # Get speech dates, strip out irrelevant characters, convert to date,
 # then add a binary variable that will represent whether the nation
 # was in a recession at the time.
-speechDates = list.files('source/')
+speechDates = list.files('data/source/')
 speechDates = sub('.txt','',speechDates)
 speechDates = gsub('_',' ',speechDates)
 speechDates = as.data.frame(as.Date(speechDates, format = '%Y %b %d'))
