@@ -275,6 +275,12 @@ dtm_obama = dtm[index_obama, ]
 dtm_bush = dtm[index_bush, ]
 ```
 
+<center>
+<IMG SRC="figs/bushVobama.png" float = "left" ALT="image">
+</center>
+
+<br>
+
 Here are TOP10 most frequently used words in speeches of President Obama.
 We can easily tell from the plot that President Obama emphasizes on american/america and job/work, which represent the emphasis on the country and the job market.
 <p style="text-align: left; font-size:20px; font-weight:bold;">Words frequency of President Barack Obama</p>
