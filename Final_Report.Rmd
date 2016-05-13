@@ -419,7 +419,73 @@ wordcloud(names(mfreq_d),mfreq_d,
 
 Here, we will see similarity of speeches between Democrat and Republican by using cosine similarity. Cosine similarity can show the similarity between two vectors, and can be expressed in a range from 0 to 1. 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
+## compare similarity of documents between republic and democratic
+# tdm_republican_mat <- as.matrix(tdm_republican)
+# colnames(tdm_republican_mat) = index_republican
+# tdm_democrat_mat <- as.matrix(tdm_democrat)
+# colnames(tdm_democrat_mat) = index_democrat
+# 
+# tdm_merge_mat = merge(tdm_republican_mat, tdm_democrat_mat, by = "row.names")
+# tdm_merge_mat = tdm_merge_mat[, 2:dim(tdm_merge_mat)[2]]
+# cosine_dist_mat <- as.matrix(dist(t(tdm_merge_mat), method = "cosine"))
+# 
+# 
+# tmp_row = c(0)
+# tmp_col = c(0)
+# tmp_fre = c(0)
+# tmp_which = c("")
+# for(i in 1:dim(cosine_dist_mat)[1]) {
+#   for(j in i:dim(cosine_dist_mat)[1]) {
+#     tmp_row[length(tmp_row)+1] = i
+#     tmp_col[length(tmp_col)+1] = j
+#     tmp_val = ""
+#     tmp_which[length(length)+1] = 
+#     tmp_fre[length(tmp_fre)+1] = cosine_dist_mat[i,j]
+#   }
+# }
+# #cosine_dist_ranking_df = data.frame(pair=tmp_pair_index, freq=tmp_frequency)
+# cosine_dist_ranking_df = data.frame(row=tmp_row, col=tmp_col, freq=tmp_fre)
+# 
+# cosine_dist_ranking_df_rank = cosine_dist_ranking_df[order(cosine_dist_ranking_df$freq, decreasing=TRUE), ]
+# cosine_dist_ranking_df_rank_top20 = cosine_dist_ranking_df_rank[1:20, ]
+# 
+# 
+# which_party_row = c()
+# which_party_col = c()
+# for(i in 1:dim(cosine_dist_ranking_df_rank)[1]) {
+#   if ( cosine_dist_ranking_df_rank[c(i), 'row'] %in% index_democrat ) {  
+#     which_party_row[length(which_party_row) + 1] = "Democratic"
+#   } else {
+#     which_party_row[length(which_party_row) + 1] = "Republican"
+#   }
+#   if ( cosine_dist_ranking_df_rank[c(i), 'col'] %in% index_democrat ) {  
+#     which_party_col[length(which_party_col) + 1] = "Democratic"
+#   } else {
+#     which_party_col[length(which_party_col) + 1] = "Republican"
+#   }  
+# }
+# 
+# cosine_dist_ranking_df_rank_merged = cbind(cosine_dist_ranking_df_rank, 
+#                                            data.frame(row_party=which_party_row), 
+#                                            data.frame(col_party=which_party_col)
+#                                            )
+# save(cosine_dist_ranking_df_rank_merged, file="cosine_dist_ranking_df_rank_merged.Rda")
 load("data/cosine_dist_ranking_df_rank_merged.Rda")
+
+# html_output_cosine = cosine_dist_ranking_df_rank_merged[1:30, ]
+# 
+# for(i in 1:dim(html_output_cosine)[1]) {
+#   html_output_cosine[c(i), "name1"] = paste(
+#     as.character(information[information$index == html_output_cosine[c(i), "row"], ]$name), 
+#     as.character(html_output_cosine[c(i), "row_party"]),
+#     sep = "/"
+#     )
+#   html_output_cosine[c(i), "name2"] = paste(
+#     as.character(information[information$index == html_output_cosine[c(i), "col"], ]$name), 
+#     as.character(html_output_cosine[c(i), "col_party"]), 
+#     sep = "/")
+# }
+#save(html_output_cosine, file="html_output_cosine.Rda")
 load("data/html_output_cosine.Rda")
 
 d_d = mean( cosine_dist_ranking_df_rank_merged[ (cosine_dist_ranking_df_rank_merged$row_party == "Democratic") &
@@ -436,12 +502,11 @@ r_d = mean( cosine_dist_ranking_df_rank_merged[ ((cosine_dist_ranking_df_rank_me
 ```
 
 <p style="text-align: left; font-size:20px; font-weight:bold;">Top 30 cosine similarity</p>
-<center>
 ```{r echo=FALSE, warning=FALSE, message=FALSE, fig.align='center'}
 # output of the ranking of cosine similarity
 htmlTable(html_output_cosine[1:30, c("name1", "name2", "freq")], rnames = c(1:30))
 ```
-</center>
+
 As we can see above, top row is between Democrat and Democrat, but from second row to ninth row, there are combinations between Republican and Democrat. It is interesting to see that Martin Van Buren(Democratic party) has lots of high similarities between many other presidents. The average cosine similarities of speeches between Democrat and Democrat is `r d_d`, while the cosine similarities between Republican and Republican is `r r_r`. The cosine similarities between Republican and Democrat is `r r_d`.
 
 
