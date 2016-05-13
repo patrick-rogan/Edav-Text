@@ -21,8 +21,6 @@ library(ggfortify)
 library(ggplot2)
 library(RColorBrewer)
 
-#setwd("/Users/bobminnich/Documents/Columbia/Courses/DataVisualization/Edav-Text")
-
 #Read in and load CSV
 df = read.csv("data/3D_Plotting.csv")
 df = df[,-1]
