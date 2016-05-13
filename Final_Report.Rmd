@@ -6,6 +6,8 @@ output: html_document
 ---
 
 #Introduction
+Throughout this report we will be exploring a data set that includes presidential speeches from George Washington (1790) to Barack Obama (2016). Within this report there were several areas that we wanted to explore such as visualizing the speeches, how the speeches might be related in terms of Political Party and Presidential Rating, and also within the aspect of time. We will show this through multiple methods such as dimension reduction, sentimental analysis, word frequencies and cosine similarities.We will start with visualizations using different methods of dimension reduction to explore Political Party, Presidential Rating and Year of the speech.
+
 <center>
 <IMG SRC="figs/US-Presidents-Games.jpg" float = "left" ALT="image">
 </center>
@@ -19,7 +21,7 @@ library(ggfortify)
 library(ggplot2)
 library(RColorBrewer)
 
-#setwd("/Users/bobminnich/Documents/Columbia/Courses/DataVisualization/Edav-Text")
+setwd("/Users/bobminnich/Documents/Columbia/Courses/DataVisualization/Edav-Text")
 
 #Read in and load CSV
 df = read.csv("3D_Plotting.csv")
@@ -40,7 +42,7 @@ colors_year = df[,12]
 ##Document Term Matrix Visualization
 Text can be an extremely difficult data type to visualize. Within a document term matrix (DTM) there can be tens of thousands of words, associated with only a handful of documents. This creates a very sparse matrix that is hard to conceptualize. One way to combat the sparsity is to use dimension reduction techniques in order to see if relationships are available. 
 
-Three separate forms of reduction were used on this dataset, which includes Principal Component Analysis (PCA) ,Multidimensional Scaling (MDS) and t-distributed Stochastic Neighbor Embedding(T-SNE). We want to compare these different methods to try and determine if the speeches of the presidents can help indicate different attributes.
+Three separate forms of reduction were used on this data set, which includes Principal Component Analysis (PCA) ,Multidimensional Scaling (MDS) and t-distributed Stochastic Neighbor Embedding(T-SNE). We want to compare these different methods to try and determine if the speeches of the presidents can help indicate different attributes.
 
 All three of these forms used only the Document Term Matrix and did reductions from that data to two dimensions.
 
@@ -51,7 +53,7 @@ First we look into the Political Party to see if we can find any distinct relati
 <IMG SRC="figs/Dimension_Plots_Party.png" float = "left" ALT="image">
 </center>
 <br>
-From this figure we can see that for PCA we can see some clustering of the Democrats and the Republicans. W can also see the Federalist, Deomocrat-Republican in a right group on the lower left portion of the PCA Cluster. For MDS we scan see some similar groups as PCA but for T-SNEW there is no visible pattern between political parties.
+From this figure we can see that for PCA we can see some clustering of the Democrats and the Republicans. W can also see the Federalist, Democrat-Republican in a right group on the lower left portion of the PCA Cluster. For MDS we scan see some similar groups as PCA but for T-SNEW there is no visible pattern between political parties.
 
 We further explore this area by investigating the sentiment of presidential speeches by party. Here we only compare the modern Democratic and Republican parties which have existed in their current incarnations since 1852.  
 
@@ -165,7 +167,7 @@ The legend below shows the color of the points based on year:
 <br>
 We can see from this image we can see much better groupings than for the Political Parties and the Ratings. This is most likely due to the trends, problems and speech changes over time and is most likely reflected in the words that the have chosen. 
 
-To get an idea of what words might be causing this change we can look at an Importance Plot that was generated using Random Forests, in order to predict the year based on which words they have chosen in their speech. Many of these point to some notion of time, either the word itself, or how old the word usage may be. For instance, today addressing the Congressional body as "Gentleman" is very incorrect because in todays government it is made up of men and women, while in the earlier history it was made up of only men. We can see Korea, which could be allow the Random Forests to identify presidents that were leading the country during the Korean War.  
+To get an idea of what words might be causing this change we can look at an Importance Plot that was generated using Random Forests, in order to predict the year based on which words they have chosen in their speech. Many of these point to some notion of time, either the word itself, or how old the word usage may be. For instance, today addressing the Congressional body as "Gentleman" is very incorrect because in today's government it is made up of men and women, while in the earlier history it was made up of only men. We can see Korea, which could be allow the Random Forests to identify presidents that were leading the country during the Korean War.  
 
 <center>
 <IMG SRC="figs/ImportancePlot_Years_50.png" float = "left" ALT="image">
@@ -285,7 +287,7 @@ We can see that the more recent presidents, Obama, Bush and Clinton are very clo
 
 The outliers of the plot are also interesting. Truman, Taft, Carter, Polk, which exist very far from the large cluster of presidents. While researching these presidents nothing in particular set them apart from the others. Some unique facts about them though are that Truman was president during World War 2, Taft became Chief Justice of the Supreme Courts, Polk based his campaign on a promise not re-run as president, and Carter negotiated peace talks between Egypt and Israel.
 
-We conclude this analysis by investigating the impact of poor economic conditions with the sentiment of the speech. We looked at all speeched from 1857 to present (the time period for which we have macroeconomic data for the United States) and determined which of these speeches were given in periods of economic recession. 
+We conclude this analysis by investigating the impact of poor economic conditions with the sentiment of the speech. We looked at all of the speeches from 1857 to present (the time period for which we have macroeconomic data for the United States) and determined which of these speeches were given in periods of economic recession. 
 
 <center>
 <IMG SRC="figs/S_Econ.png" float = "left" ALT="image">
@@ -295,9 +297,9 @@ Much like our sentiment analysis of speech by political party, we see that almos
 
 ###Decode: Top 10 frequent words
 
-In the previous part, we confirmed that some presidents are clustered while some are not. Visualizing the top 10 words from each presidents' speeches in a heatmap shows the fact that some words appear frequently over years. For instance,'will', 'govern', 'nation' are high frequency words over years. And 'work', 'job', 'secure' are new top words that appear in President Barack Obama's speeches. 
+In the previous part, we confirmed that some presidents are clustered while some are not. Visualizing the top 10 words from each presidents' speeches in a heat map shows the fact that some words appear frequently over years. For instance,'will', 'govern', 'nation' are high frequency words over years. And 'work', 'job', 'secure' are new top words that appear in President Barack Obama's speeches. 
 
-(In each pixel box, readers will see information of president, word and its frequency. The X-axis didn't show all words due to the plot size, but readers are able to see the detailed information when hovering over the heatmap.)
+(In each pixel box, readers will see information of president, word and its frequency. The X-axis didn't show all words due to the plot size, but readers are able to see the detailed information when hovering over the heat map.)
 <br />
 <br />
 <center>
@@ -446,3 +448,6 @@ As we can see above, top row is between Democrat and Democrat, but from second r
 
 
 Before executing this analysis, we thought that we could see the clear difference between Democrat and Republican in terms of contents of speeches. According to bar plots and cosine similarities, contents themselves do not have major difference, if we see speeches from 1790 to 2016. From this results, other factors besides contents of speeches might also be related.
+
+#Conclusion
+Throughout this report we have explored many different methods in understanding textual data. We have seen visualizations using dimension reduction, sentiment analysis and word counts to allow many different approaches to viewing a set of documents. Many different insights have been discussed about these documents and we can see that some of the approaches allow for potential extra features, such as dimension reduction and sentiment analysis, that could help with a machine learning task such as classification or predicting the year. 
